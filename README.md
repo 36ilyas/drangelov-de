@@ -16,7 +16,15 @@ Ein moderner One-Pager als Ersatz für die bestehende Webseite (ursprünglich vo
 - Telefon als Primary-CTA (`tel:`-Links), Google-Maps-Embed für Anfahrt
 - `prefers-reduced-motion`-respektiert
 
-## Sektionen
+## Seiten
+
+| Datei | Inhalt |
+|---|---|
+| [`index.html`](index.html) | One-Pager mit Hero, Praxis-Vorstellung, Team, Leistungen, Sprechzeiten, Notdienst, Karriere, Kontakt & Anfahrt |
+| [`impressum.html`](impressum.html) | Pflicht-Impressum nach § 5 TMG (Vertretungsberechtigte, Berufsregelungen, Aufsichtsbehörde, Streitschlichtung, Haftung, Urheberrecht) |
+| [`datenschutz.html`](datenschutz.html) | Datenschutzerklärung nach DSGVO inkl. Offenlegung der eingebetteten Drittdienste (Google Maps, Google Fonts, Tailwind CDN, Unsplash, GitHub Pages) |
+
+## Sektionen der Startseite
 
 1. Sticky Top-Nav (transparent → solid)
 2. Hero (Split-Layout, Text + Bild)
@@ -26,7 +34,7 @@ Ein moderner One-Pager als Ersatz für die bestehende Webseite (ursprünglich vo
 6. Sprechzeiten + Notdienst
 7. Karriere / Stellenangebot
 8. Kontakt & Anfahrt (mit Google-Maps-Embed)
-9. Footer
+9. Footer (Sprechzeiten-Kurzform · Impressum · Datenschutz)
 
 ## Lokal anschauen
 
@@ -39,17 +47,19 @@ python -m http.server 8000
 
 ## Stand & nächste Schritte
 
-**Prototyp**, gebaut für eine Vorstellung bei der Praxis. Bewusste Platzhalter:
+**Prototyp**, gebaut für eine Vorstellung bei der Praxis. Bewusste Platzhalter (im UI als `[grüne Markierung]` sichtbar):
 
-- Notdienst-Telefonnummer (`0180 0000000`) → echte Nummer einsetzen
-- Impressum / Datenschutz → Links füllen
-- Bilder sind Unsplash-Platzhalter → später echte Praxis-/Team-Fotos
+- Notdienst-Telefonnummer auf der Startseite (`0180 0000000`)
+- Fax-Nummer und USt-IdNr. im Impressum
+- Bilder von Team und Praxis sind Unsplash-Platzhalter
 
 Falls die Praxis Interesse hat:
 
-- Echte Fotos einsetzen
-- Impressum & Datenschutz vervollständigen
-- Eventuell Migration auf Astro für saubere Multi-Page-Struktur
+- Platzhalter ersetzen (Praxis kennt die Werte)
+- Echte Team- und Praxisfotos einsetzen
+- Rechtstexte (Impressum / Datenschutz) durch einen Anwalt freigeben lassen
+- Eventuell Click-to-Load-Lösung für das Google-Maps-Embed einbauen
+- Migration auf Astro für saubere Component-Wiederverwendung
 - Eigene Domain anstelle von `github.io`
 
 ## Credits
