@@ -530,35 +530,35 @@
       <!-- Kontaktdaten -->
       <div class="reveal flex flex-col gap-4">
         <!-- Adresse -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6">
+        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
           <div>
             <h3 class="font-medium text-ink text-lg">Adresse</h3>
-            <p class="mt-1 text-[1.05rem] text-ink-soft">Limitenstraße 173<br />41236 Mönchengladbach</p>
+            <p class="mt-1 text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
           </div>
         </div>
-        <!-- Telefon -->
-        <a href="tel:+49216640641" class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
+        <!-- Telefon (Karte = div mit Hover; Link nur um die Nummer → drag-markierbar) -->
+        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </span>
           <div>
             <h3 class="font-medium text-ink text-lg">Telefon</h3>
-            <p class="mt-1 text-[1.05rem] text-sage-700 font-medium">02166 40641</p>
+            <a href="tel:+49216640641" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
           </div>
-        </a>
-        <!-- E-Mail -->
-        <a href="mailto:info@drangelov.de" class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
+        </div>
+        <!-- E-Mail (analog) -->
+        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           </span>
           <div>
             <h3 class="font-medium text-ink text-lg">E-Mail</h3>
-            <p class="mt-1 text-[1.05rem] text-sage-700 font-medium">info@drangelov.de</p>
+            <a href="mailto:info@drangelov.de" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
           </div>
-        </a>
+        </div>
 
         <!-- Route planen -->
         <a href="https://www.google.com/maps/dir/?api=1&destination=Limitenstra%C3%9Fe+173+41236+M%C3%B6nchengladbach" target="_blank" rel="noopener" class="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-7 py-4 text-lg font-medium transition-colors">
