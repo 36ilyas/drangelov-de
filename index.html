@@ -139,7 +139,7 @@
 <!-- ============================================================= -->
 <!-- SECTION: HERO (Split-Layout, Text links · Bild rechts)        -->
 <!-- ============================================================= -->
-<section id="hero" class="relative pt-[112px] pb-16 sm:pb-24 lg:pt-[150px] lg:pb-28">
+<section id="hero" class="relative pt-[96px] pb-12 sm:pt-[112px] sm:pb-24 lg:pt-[150px] lg:pb-28">
   <div class="mx-auto max-w-content px-5 sm:px-8">
     <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-center">
 
@@ -179,9 +179,9 @@
         </p>
       </div>
 
-      <!-- Hero-Bild -->
+      <!-- Hero-Bild (auf Mobile ausgeblendet, damit der Hero komplett in den Viewport passt) -->
       <!-- UNSPLASH: "modern dental practice interior, warm lighting" -->
-      <div class="reveal reveal-d1">
+      <div class="reveal reveal-d1 hidden sm:block">
         <div class="img-slot aspect-[4/5] sm:aspect-[5/5] lg:aspect-[4/5] rounded-[28px] shadow-[0_30px_60px_-30px_rgba(44,42,37,.35)] ring-1 ring-black/5">
           <span class="slot-label">Praxisfoto · helle, warme Praxisräume</span>
           <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Moderne, helle Zahnarztpraxis von Dr. Angelov" loading="eager" onerror="this.style.display='none'" />
@@ -504,11 +504,11 @@
       <div class="lg:flex-1">
         <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-700">Karriere</span>
         <h2 class="mt-3 font-serif text-[1.8rem] sm:text-[2.3rem] leading-[1.12] text-ink">Werden Sie Teil unseres Teams</h2>
-        <p class="mt-4 text-lg text-ink-soft max-w-2xl">Wir suchen eine <strong class="text-ink font-medium">zahnmedizinische Fachangestellte</strong> sowie <strong class="text-ink font-medium">Auszubildende</strong>. Wir freuen uns auf Ihre Bewerbung.</p>
+        <p class="mt-4 text-lg text-ink-soft max-w-2xl">Wir suchen eine <strong class="text-ink font-medium">zahnmedizinische Fachangestellte</strong> sowie <strong class="text-ink font-medium">Auszubildende</strong>. Bewerbungen bitte an <a href="mailto:info@drangelov.de?subject=Bewerbung" class="select-text font-medium text-sage-700 underline underline-offset-4 decoration-sage-300 hover:decoration-sage-600 transition-colors">info@drangelov.de</a>.</p>
       </div>
       <a href="mailto:info@drangelov.de?subject=Bewerbung" class="shrink-0 inline-flex items-center justify-center gap-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-7 py-4 text-lg font-medium transition-colors">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        info@drangelov.de
+        Bewerbung schreiben
       </a>
     </div>
   </div>
