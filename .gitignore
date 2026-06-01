@@ -1,0 +1,23 @@
+# Brainstorm-Session-Daten (lokal)
+.superpowers/
+
+# Claude-Session-Daten (lokal)
+.claude/
+
+# Node / Build (für später, falls Astro hinzukommt)
+node_modules/
+dist/
+.astro/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Lokale Archive
+*.tar.gz
+*.zip
