@@ -3,702 +3,244 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Praxis Dr. Emil Angelov · Zahnmedizin in Mönchengladbach</title>
-<meta name="description" content="Zahnarztpraxis Dr. Emil Angelov in Mönchengladbach – seit 2011. Prophylaxe, Zahnerhaltung, Ästhetik, Implantologie & Kinderzahnheilkunde. Termine unter 02166 40641." />
+<title>Website-Entwürfe · Praxis Dr. Emil Angelov</title>
+<meta name="description" content="Drei Design-Entwürfe für die neue Website der Zahnarztpraxis Dr. Emil Angelov in Mönchengladbach — zum Vergleichen und Auswählen." />
+<meta name="robots" content="noindex" />
 
-<!-- FONTS: Inter (Body/UI) + Fraunces (Serif-Akzent) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-<!-- TAILWIND (CDN – ok für Prototyp) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          cream:  '#F7F5F0',
-          paper:  '#FCFBF8',
-          ink:    '#2C2A25',
-          'ink-soft': '#5E574C',
-          line:   '#E7E1D6',
-          sage: {
-            50:  '#EEF1E9',
-            100: '#E1E7D6',
-            200: '#CCD6BC',
-            400: '#9AA889',
-            500: '#7E8E6E',
-            600: '#6B7B5B',
-            700: '#566348',
-          },
-        },
-        fontFamily: {
-          sans:  ['Inter', 'system-ui', 'sans-serif'],
-          serif: ['Fraunces', 'Georgia', 'serif'],
-        },
-        maxWidth: { content: '1180px' },
-      },
-    },
-  };
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Lora:wght@500;600&display=swap" rel="stylesheet" />
 
 <style>
-  html { font-size: 17px; scroll-behavior: smooth; }
-  body { -webkit-font-smoothing: antialiased; }
-  section[id] { scroll-margin-top: 88px; }
+  :root {
+    --bg: #f3f1ea;
+    --panel: #ffffff;
+    --ink: #292723;
+    --ink-soft: #5f594e;
+    --muted: #8a8275;
+    --line: #e2ddd0;
+    --accent: #7E8E6E;
+    --accent-dark: #566348;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  /* Reveal-on-scroll */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1); }
-  .reveal.in { opacity: 1; transform: none; }
-  .reveal-d1 { transition-delay: .08s; }
-  .reveal-d2 { transition-delay: .16s; }
-  .reveal-d3 { transition-delay: .24s; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  /* ---------- Header ---------- */
+  header.top { padding: 72px 0 8px; text-align: center; }
+  .eyebrow {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-dark); font-weight: 600; margin-bottom: 18px;
+  }
+  .badge-logo {
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 26px;
+  }
+  .badge-logo .mark {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--accent);
+    color: #fff; font-family: 'Fraunces', serif; font-size: 22px;
+    display: grid; place-items: center;
+  }
+  .badge-logo .name { font-family: 'Fraunces', serif; font-size: 19px; color: var(--ink); }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: clamp(2.1rem, 5vw, 3.3rem); line-height: 1.08;
+    letter-spacing: -0.01em; color: var(--ink); margin-bottom: 18px;
+  }
+  .lede {
+    font-size: clamp(1rem, 2.2vw, 1.18rem); color: var(--ink-soft);
+    max-width: 620px; margin: 0 auto;
   }
 
-  /* Warmer Bild-Platzhalter (greift, falls Unsplash-Foto nicht lädt) */
-  .img-slot { position: relative; overflow: hidden;
-    background: repeating-linear-gradient(135deg, #EFEAE0, #EFEAE0 14px, #E9E3D7 14px, #E9E3D7 28px); }
-  .img-slot > img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover; display: block; }
-  .img-slot > .slot-label { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center;
-    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; font-size: .72rem; letter-spacing: .04em;
-    color: #9A917F; text-align: center; padding: 1rem; }
+  /* ---------- Cards ---------- */
+  .cards {
+    display: grid; gap: 28px; padding: 56px 0 24px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 940px) { .cards { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
 
-  /* Carousel */
-  .carousel { scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none; }
-  .carousel::-webkit-scrollbar { display: none; }
-  .carousel > * { scroll-snap-align: start; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
+    overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: 0 1px 2px rgba(41,39,35,0.04);
+    transition: transform .35s cubic-bezier(.16,.84,.44,1), box-shadow .35s cubic-bezier(.16,.84,.44,1);
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -32px rgba(41,39,35,0.45); }
 
-  /* Mobile-Menü */
-  .mobile-menu { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
-  .mobile-menu.open { max-height: 460px; }
+  /* Mini-Preview (echte Theme-Farben & Schriften) */
+  .preview { height: 188px; position: relative; overflow: hidden; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+  .preview .p-label { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; }
+  .preview .p-head { font-size: 1.45rem; line-height: 1.12; margin-top: auto; }
+  .preview .p-btn { display: inline-block; align-self: flex-start; margin-top: 12px; font-size: 11px; font-weight: 600; padding: 7px 14px; border-radius: 999px; }
+
+  /* Entwurf 1 — Sanft & modern (sage/cream, Fraunces) */
+  .pv1 { background: #F7F5F0; }
+  .pv1 .p-label { color: #6B7B5B; }
+  .pv1 .p-head { font-family: 'Fraunces', serif; font-weight: 600; color: #2C2A25; }
+  .pv1 .p-head em { font-style: normal; color: #6B7B5B; }
+  .pv1 .p-btn { background: #7E8E6E; color: #fff; }
+
+  /* Entwurf 2 — Klassisch (paper + dark-green topbar, Lora) */
+  .pv2 { background: #faf9f6; }
+  .pv2 .topstrip { position: absolute; top: 0; left: 0; right: 0; height: 26px; background: #41573f; color: #e8eee5; font-size: 9.5px; letter-spacing: .06em; display: flex; align-items: center; padding: 0 22px; }
+  .pv2 .p-label { color: #5a7d5a; margin-top: 30px; }
+  .pv2 .p-head { font-family: 'Lora', serif; font-weight: 600; color: #2b332c; }
+  .pv2 .p-btn { background: #5a7d5a; color: #fff; }
+
+  /* Entwurf 3 — Premium & ruhig (pine dark, Cormorant, cream) */
+  .pv3 { background: #1e2c22; }
+  .pv3 .p-label { color: #b9cdaf; }
+  .pv3 .p-head { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #f4f1e8; font-size: 1.7rem; }
+  .pv3 .p-btn { background: #f4f1e8; color: #1e2c22; }
+  .pv3 .rule { width: 42px; height: 1px; background: #97a888; margin-top: 8px; }
+
+  .card-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+  .card-no { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .card-title { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--ink); margin: 6px 0 10px; line-height: 1.15; }
+  .card-desc { font-size: 0.97rem; color: var(--ink-soft); margin-bottom: 18px; }
+  .swatches { display: flex; gap: 7px; margin-bottom: 22px; }
+  .swatches i { width: 18px; height: 18px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.07); }
+  .card-cta {
+    margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--ink); color: #fff; text-decoration: none;
+    padding: 13px 20px; border-radius: 999px; font-size: 0.97rem; font-weight: 600;
+    transition: background .25s;
+  }
+  .card-cta:hover { background: var(--accent-dark); }
+  .card-cta svg { width: 17px; height: 17px; }
+
+  .card-sub { margin-top: 14px; display: flex; gap: 16px; justify-content: center; }
+  .card-sub a { font-size: 0.84rem; color: var(--muted); text-decoration: none; }
+  .card-sub a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- Hinweis ---------- */
+  .note {
+    margin: 24px auto 0; max-width: 760px; text-align: center;
+    font-size: 0.9rem; color: var(--muted);
+    background: #ece9df; border: 1px solid var(--line); border-radius: 14px; padding: 16px 22px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top: auto; padding: 48px 0 40px; text-align: center; border-top: 1px solid var(--line); margin-top: 64px; }
+  footer .contact { display: flex; flex-wrap: wrap; gap: 8px 26px; justify-content: center; margin-bottom: 14px; font-size: 0.95rem; }
+  footer .contact a { color: var(--accent-dark); text-decoration: none; font-weight: 500; }
+  footer .contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  footer .fine { font-size: 0.85rem; color: var(--muted); }
 </style>
 </head>
+<body>
 
-<body class="bg-cream font-sans text-ink antialiased">
+<div class="wrap">
+  <header class="top">
+    <div class="badge-logo">
+      <span class="mark">A</span>
+      <span class="name">Dr. Emil Angelov</span>
+    </div>
+    <div class="eyebrow">Website-Entwürfe zur Auswahl</div>
+    <h1>Drei Vorschläge für Ihren<br />neuen Praxis-Auftritt</h1>
+    <p class="lede">Jeder Entwurf enthält dieselben Inhalte — Leistungen, Team, Sprechzeiten, Notdienst und Kontakt — in einer eigenen gestalterischen Handschrift. Schauen Sie sich in Ruhe um und wählen Sie Ihren Favoriten.</p>
+  </header>
 
-<!-- ============================================================= -->
-<!-- SECTION: STICKY TOP-NAV (transparent → solid beim Scrollen)    -->
-<!-- ============================================================= -->
-<header id="site-header" class="sticky top-0 z-50 transition-all duration-300">
-  <nav class="mx-auto max-w-content px-5 sm:px-8">
-    <div id="nav-bar" class="flex items-center justify-between h-[72px] transition-all duration-300">
+  <div class="cards">
 
-      <!-- Logo -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl leading-none transition-colors group-hover:bg-sage-600">A</span>
-        <span class="leading-tight">
-          <span class="block font-serif text-[1.15rem] text-ink">Dr. Emil Angelov</span>
-          <span class="block text-[.72rem] tracking-[.14em] uppercase text-ink-soft">Zahnmedizin · Mönchengladbach</span>
-        </span>
-      </a>
-
-      <!-- Desktop-Links -->
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="#team"        class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Team</a>
-        <a href="#praxis"      class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Praxis</a>
-        <a href="#leistungen"  class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Leistungen</a>
-        <a href="#sprechzeiten"class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Sprechzeiten</a>
-        <a href="#kontakt"     class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Kontakt</a>
-        <a href="tel:+49216640641" class="inline-flex items-center gap-2 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-5 py-2.5 text-[.95rem] font-medium transition-colors shadow-sm">
-          <!-- icon: phone -->
-          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          02166 40641
+    <!-- ENTWURF 1 -->
+    <article class="card">
+      <div class="preview pv1">
+        <div class="p-label">Familienpraxis seit 2011</div>
+        <div class="p-head">Ihre Zähne in<br /><em>besten Händen.</em></div>
+        <span class="p-btn">Termin vereinbaren</span>
+      </div>
+      <div class="card-body">
+        <div class="card-no">Entwurf 1</div>
+        <h2 class="card-title">Sanft &amp; modern</h2>
+        <p class="card-desc">Warmes Off-White, viel Luft, weiche Karten und sanfte Animationen. Freundlich und zeitgemäß, ohne laut zu sein.</p>
+        <div class="swatches"><i style="background:#F7F5F0"></i><i style="background:#7E8E6E"></i><i style="background:#2C2A25"></i></div>
+        <a class="card-cta" href="entwurf-1/">
+          Entwurf ansehen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-      </div>
-
-      <!-- Burger (mobil) -->
-      <button id="burger" aria-label="Menü öffnen" aria-expanded="false" class="lg:hidden grid place-items-center w-11 h-11 rounded-lg text-ink hover:bg-black/5 transition-colors">
-        <svg id="burger-open" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        <svg id="burger-close" class="hidden w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile-Menü -->
-  <div id="mobile-menu" class="mobile-menu lg:hidden bg-paper border-t border-line shadow-lg">
-    <div class="px-5 py-4 flex flex-col">
-      <a href="#team"         class="mobile-link py-3.5 text-lg border-b border-line/70">Team</a>
-      <a href="#praxis"       class="mobile-link py-3.5 text-lg border-b border-line/70">Praxis</a>
-      <a href="#leistungen"   class="mobile-link py-3.5 text-lg border-b border-line/70">Leistungen</a>
-      <a href="#sprechzeiten" class="mobile-link py-3.5 text-lg border-b border-line/70">Sprechzeiten</a>
-      <a href="#kontakt"      class="mobile-link py-3.5 text-lg border-b border-line/70">Kontakt</a>
-      <a href="tel:+49216640641" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-sage-500 text-white px-6 py-4 text-lg font-medium">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Jetzt anrufen · 02166 40641
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-
-<!-- ============================================================= -->
-<!-- SECTION: HERO (Split-Layout, Text links · Bild rechts)        -->
-<!-- ============================================================= -->
-<section id="hero" class="relative pt-10 pb-12 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-center">
-
-      <!-- Text -->
-      <div class="reveal">
-        <span class="inline-flex items-center gap-2 rounded-full bg-sage-50 text-sage-700 px-4 py-1.5 text-[.82rem] font-medium tracking-wide">
-          <span class="w-1.5 h-1.5 rounded-full bg-sage-500"></span>
-          Familienpraxis seit 2011
-        </span>
-
-        <h1 class="mt-6 font-serif text-[2.5rem] leading-[1.08] sm:text-[3.4rem] lg:text-[3.9rem] text-ink">
-          Praxis<br /><span class="text-sage-600">Dr. Emil Angelov</span>
-        </h1>
-
-        <p class="mt-5 text-xl sm:text-2xl text-ink-soft font-serif">
-          Zahnmedizin in Mönchengladbach — seit 2011.
-        </p>
-        <p class="mt-4 text-lg text-ink-soft max-w-xl">
-          Vertrauensvolle, moderne Zahnheilkunde für die ganze Familie. Persönlich, gründlich und mit der Erfahrung von über einem Jahrzehnt an der Limitenstraße.
-        </p>
-
-        <!-- CTAs -->
-        <div class="mt-9 flex flex-col sm:flex-row gap-3.5">
-          <a href="tel:+49216640641" class="inline-flex items-center justify-center gap-3 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-7 py-4 text-lg font-medium shadow-sm hover:shadow transition-all">
-            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>Termin vereinbaren · 02166 40641</span>
-          </a>
-          <a href="#sprechzeiten" class="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-line hover:border-sage-400 text-ink px-7 py-4 text-lg font-medium transition-colors">
-            Sprechzeiten ansehen
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-          </a>
-        </div>
-
-        <p class="mt-6 text-[.95rem] text-ink-soft flex items-center gap-2">
-          <svg class="w-5 h-5 text-sage-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
-          Gesetzlich &amp; privat · Termine kurzfristig möglich
-        </p>
-      </div>
-
-      <!-- Hero-Bild (auf Mobile ausgeblendet, damit der Hero komplett in den Viewport passt) -->
-      <!-- UNSPLASH: "modern dental practice interior, warm lighting" -->
-      <div class="reveal reveal-d1 hidden sm:block">
-        <div class="img-slot aspect-[4/5] sm:aspect-[5/5] lg:aspect-[4/5] rounded-[28px] shadow-[0_30px_60px_-30px_rgba(44,42,37,.35)] ring-1 ring-black/5">
-          <span class="slot-label">Praxisfoto · helle, warme Praxisräume</span>
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Moderne, helle Zahnarztpraxis von Dr. Angelov" loading="eager" onerror="this.style.display='none'" />
+        <div class="card-sub">
+          <a href="entwurf-1/impressum.html">Impressum</a>
+          <a href="entwurf-1/datenschutz.html">Datenschutz</a>
         </div>
       </div>
+    </article>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: ÜBER DIE PRAXIS / WILLKOMMEN                          -->
-<!-- ============================================================= -->
-<section id="praxis" class="py-20 sm:py-28 bg-paper border-y border-line">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-start">
-
-      <div class="reveal">
-        <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Willkommen</span>
-        <h2 class="mt-4 font-serif text-[2.1rem] sm:text-[2.7rem] leading-[1.1] text-ink">
-          Schön, dass Sie da sind.
-        </h2>
-        <p class="mt-6 text-xl leading-relaxed text-ink-soft">
-          Wir freuen uns, Sie hier auf unserer Homepage begrüßen zu dürfen, um Ihnen mit unserer fachlichen Beratung zur Verfügung zu stehen.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed text-ink-soft">
-          Seit 2011 betreuen wir Patientinnen und Patienten aus Mönchengladbach und Umgebung – vom ersten Milchzahn bis zum hochwertigen Zahnersatz. Bei uns nehmen wir uns Zeit für Sie.
-        </p>
+    <!-- ENTWURF 2 -->
+    <article class="card">
+      <div class="preview pv2">
+        <div class="topstrip">Limitenstraße 173 · Mönchengladbach</div>
+        <div class="p-label">Zahnarztpraxis Mönchengladbach</div>
+        <div class="p-head">Herzlich willkommen<br />in der Praxis</div>
+        <span class="p-btn">Termin vereinbaren</span>
       </div>
-
-      <!-- 3 Stichpunkte -->
-      <div class="reveal reveal-d1 grid sm:grid-cols-1 gap-4">
-        <!-- Erfahrung -->
-        <div class="flex gap-5 rounded-2xl bg-cream border border-line p-6">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-xl text-ink">Über ein Jahrzehnt Erfahrung</h3>
-            <p class="mt-1.5 text-[1.02rem] text-ink-soft">Eingespieltes Team am festen Standort an der Limitenstraße – Kontinuität, die Vertrauen schafft.</p>
-          </div>
-        </div>
-        <!-- Methoden -->
-        <div class="flex gap-5 rounded-2xl bg-cream border border-line p-6">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2.5 6.5L22 12l-6.5 2.5L13 21l-2.5-6.5L4 12l6.5-2.5L13 3z"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-xl text-ink">Modernste Behandlungsmethoden</h3>
-            <p class="mt-1.5 text-[1.02rem] text-ink-soft">Aktuelle Technik und schonende Verfahren – für präzise Diagnosen und angenehme Behandlungen.</p>
-          </div>
-        </div>
-        <!-- Atmosphäre -->
-        <div class="flex gap-5 rounded-2xl bg-cream border border-line p-6">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-xl text-ink">Persönliche Atmosphäre</h3>
-            <p class="mt-1.5 text-[1.02rem] text-ink-soft">Ein freundliches Team, das zuhört. Wir erklären jeden Schritt – ganz ohne Hektik.</p>
-          </div>
+      <div class="card-body">
+        <div class="card-no">Entwurf 2</div>
+        <h2 class="card-title">Klassisch &amp; vertrauensvoll</h2>
+        <p class="card-desc">Serifen-Headlines, ein eleganter Info-Balken oben und ein heller Hero mit Praxisbild. Solide, seriös, bewährt.</p>
+        <div class="swatches"><i style="background:#faf9f6"></i><i style="background:#5a7d5a"></i><i style="background:#41573f"></i></div>
+        <a class="card-cta" href="entwurf-2/">
+          Entwurf ansehen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="card-sub">
+          <a href="entwurf-2/impressum.html">Impressum</a>
+          <a href="entwurf-2/datenschutz.html">Datenschutz</a>
         </div>
       </div>
+    </article>
 
-    </div>
-
-    <!-- ----- Praxis-Einblicke (Carousel-Platzhalter, später erweiterbar) ----- -->
-    <div class="reveal mt-16 sm:mt-20">
-      <div class="flex items-end justify-between gap-4 mb-6">
+    <!-- ENTWURF 3 -->
+    <article class="card">
+      <div class="preview pv3">
+        <div class="p-label">Zahnarztpraxis · Mönchengladbach</div>
         <div>
-          <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Einblicke</span>
-          <h3 class="mt-2 font-serif text-2xl sm:text-3xl text-ink">Unsere Praxisräume</h3>
+          <div class="p-head">Zahnmedizin mit Ruhe<br />&amp; Anspruch</div>
+          <div class="rule"></div>
         </div>
-        <div class="hidden sm:flex gap-2">
-          <button data-carousel="praxis" data-dir="-1" aria-label="Zurück" class="grid place-items-center w-11 h-11 rounded-full bg-white border border-line hover:border-sage-400 text-ink transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button data-carousel="praxis" data-dir="1" aria-label="Weiter" class="grid place-items-center w-11 h-11 rounded-full bg-white border border-line hover:border-sage-400 text-ink transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
+        <span class="p-btn">02166 40641 anrufen</span>
       </div>
-
-      <!-- UNSPLASH: "dental clinic interior, treatment room, reception, waiting area" -->
-      <div id="carousel-praxis" class="carousel flex gap-5 overflow-x-auto pb-2 -mx-5 px-5 sm:mx-0 sm:px-0">
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Empfang &amp; Wartebereich</span>
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Empfangsbereich der Praxis" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Behandlungsraum</span>
-          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80" alt="Moderner Behandlungsraum" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Beratung &amp; Diagnostik</span>
-          <img src="https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=800&q=80" alt="Beratungsraum" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Prophylaxe-Bereich</span>
-          <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" alt="Prophylaxe-Bereich" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: TEAM (3 Karten · später erweiterbar)                 -->
-<!-- ============================================================= -->
-<section id="team" class="py-20 sm:py-28">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="reveal max-w-2xl">
-      <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Ihr Team</span>
-      <h2 class="mt-4 font-serif text-[2.1rem] sm:text-[2.7rem] leading-[1.1] text-ink">Menschen, denen Sie vertrauen können</h2>
-      <p class="mt-5 text-lg text-ink-soft">Erfahrene Zahnärztinnen und Zahnärzte, die sich Zeit nehmen – für Ihre Gesundheit und Ihr gutes Gefühl.</p>
-    </div>
-
-    <!-- TEAM-KARTEN: Struktur bewusst gleichförmig, damit Karussell/weitere Mitglieder leicht ergänzbar sind -->
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Karte: Emil Angelov -->
-      <article class="reveal group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
-        <!-- UNSPLASH: "professional dentist portrait, friendly, white coat" -->
-        <div class="img-slot aspect-[4/5]">
-          <span class="slot-label">Porträt · Dr. E. Angelov</span>
-          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" alt="Dr. med. dent. Emil Angelov" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Emil Angelov</h3>
-          <p class="mt-1 text-sage-600 font-medium">Praxisinhaber</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Gründer der Praxis. Schwerpunkte in Zahnerhaltung und Prothetik – mit dem Blick fürs Ganze.</p>
-        </div>
-      </article>
-
-      <!-- Karte: Viktor Angelov -->
-      <article class="reveal reveal-d1 group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
-        <div class="img-slot aspect-[4/5]">
-          <span class="slot-label">Porträt · Dr. V. Angelov</span>
-          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=700&q=80" alt="Dr. med. dent. Viktor Angelov, MSc" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Viktor Angelov, MSc</h3>
-          <p class="mt-1 text-sage-600 font-medium">Zahnarzt · Implantologie</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Spezialisiert auf Implantologie und ästhetische Zahnmedizin. Master of Science.</p>
-        </div>
-      </article>
-
-      <!-- Karte: Dilyana Georgiev -->
-      <article class="reveal reveal-d2 group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
-        <div class="img-slot aspect-[4/5]">
-          <span class="slot-label">Porträt · Dr. D. Georgiev</span>
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" alt="Dr. med. dent. Dilyana Georgiev" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Dilyana Georgiev</h3>
-          <p class="mt-1 text-sage-600 font-medium">Zahnärztin</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Einfühlsame Betreuung – mit besonderem Gespür für ängstliche Patienten und Kinder.</p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: LEISTUNGEN (Grid · 6 Tiles)                          -->
-<!-- ============================================================= -->
-<section id="leistungen" class="py-20 sm:py-28 bg-paper border-y border-line">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="reveal max-w-2xl">
-      <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Leistungen</span>
-      <h2 class="mt-4 font-serif text-[2.1rem] sm:text-[2.7rem] leading-[1.1] text-ink">Alles für Ihre Zahngesundheit</h2>
-      <p class="mt-5 text-lg text-ink-soft">Von der Vorsorge bis zur hochwertigen Versorgung – persönlich auf Sie abgestimmt.</p>
-    </div>
-
-    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <!-- Prophylaxe -->
-      <div class="reveal group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.94 6.06 9 3 8.06 6.06 5 7l3.06.94L9 11l.94-3.06L13 7l-3.06-.94zM19 12l-.6 2-2 .6 2 .6.6 2 .6-2 2-.6-2-.6-.6-2zM6 15l-.5 1.5L4 17l1.5.5L6 19l.5-1.5L8 17l-1.5-.5L6 15z"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Prophylaxe</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Professionelle Zahnreinigung und Vorsorge, damit Ihre Zähne ein Leben lang gesund bleiben.</p>
-      </div>
-
-      <!-- Zahnerhaltung -->
-      <div class="reveal reveal-d1 group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Zahnerhaltung</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Schonende Füllungen und Wurzelbehandlungen – wir bewahren, was erhalten werden kann.</p>
-      </div>
-
-      <!-- Ästhetische Zahnmedizin -->
-      <div class="reveal reveal-d2 group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9l4-6zM2 9h20M12 3 8 9l4 12 4-12-4-6z"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Ästhetische Zahnmedizin</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Natürlich schöne Zähne durch sanftes Bleaching und hochwertige Veneers.</p>
-      </div>
-
-      <!-- Implantologie -->
-      <div class="reveal group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 8v6M9 11h6M10 22l2-8 2 8"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Implantologie</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Fester Zahnersatz, der sich anfühlt und aussieht wie Ihre eigenen Zähne.</p>
-      </div>
-
-      <!-- Kinderzahnheilkunde -->
-      <div class="reveal reveal-d1 group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Kinderzahnheilkunde</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Liebevolle, angstfreie Betreuung – für einen guten Start in ein gesundes Zahnleben.</p>
-      </div>
-
-      <!-- Notdienst -->
-      <div class="reveal reveal-d2 group rounded-2xl bg-cream border border-line p-7 transition-colors hover:border-sage-400">
-        <span class="grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600 transition-colors group-hover:bg-sage-500 group-hover:text-white">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>
-        </span>
-        <h3 class="mt-5 font-serif text-xl text-ink">Notdienst</h3>
-        <p class="mt-2 text-[1.02rem] text-ink-soft">Akute Schmerzen? Wir sind auch im Notfall schnell für Sie erreichbar.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: SPRECHZEITEN + NOTDIENST                             -->
-<!-- ============================================================= -->
-<section id="sprechzeiten" class="py-20 sm:py-28">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
-
-      <!-- Sprechzeiten-Liste -->
-      <div class="reveal">
-        <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Sprechzeiten</span>
-        <h2 class="mt-4 font-serif text-[2.1rem] sm:text-[2.7rem] leading-[1.1] text-ink">Wann wir für Sie da sind</h2>
-
-        <ul class="mt-8 rounded-3xl bg-paper border border-line overflow-hidden">
-          <li class="flex items-center justify-between gap-4 px-6 py-4 border-b border-line">
-            <span class="text-lg font-medium text-ink">Montag</span>
-            <span class="text-lg text-ink-soft tabular-nums">08:15–13:00 · 13:30–17:30</span>
-          </li>
-          <li class="flex items-center justify-between gap-4 px-6 py-4 border-b border-line">
-            <span class="text-lg font-medium text-ink">Dienstag</span>
-            <span class="text-lg text-ink-soft tabular-nums">08:15–13:00 · 13:30–17:30</span>
-          </li>
-          <li class="flex items-center justify-between gap-4 px-6 py-4 border-b border-line">
-            <span class="text-lg font-medium text-ink">Mittwoch</span>
-            <span class="text-lg text-ink-soft tabular-nums">08:15–14:00</span>
-          </li>
-          <li class="flex items-center justify-between gap-4 px-6 py-4 border-b border-line">
-            <span class="text-lg font-medium text-ink">Donnerstag</span>
-            <span class="text-lg text-ink-soft tabular-nums">08:15–12:00 · 16:00–20:00</span>
-          </li>
-          <li class="flex items-center justify-between gap-4 px-6 py-4 border-b border-line">
-            <span class="text-lg font-medium text-ink">Freitag</span>
-            <span class="text-lg text-ink-soft tabular-nums">08:15–14:00</span>
-          </li>
-          <li class="flex items-center justify-between gap-4 px-6 py-4">
-            <span class="text-lg font-medium text-ink-soft">Sa &amp; So</span>
-            <span class="text-lg text-ink-soft">Geschlossen</span>
-          </li>
-        </ul>
-
-        <p class="mt-5 text-[1.02rem] text-ink-soft flex items-start gap-2.5">
-          <svg class="w-5 h-5 mt-0.5 shrink-0 text-sage-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          Bitte vereinbaren Sie telefonisch einen Termin, um Wartezeiten zu vermeiden.
-        </p>
-      </div>
-
-      <!-- Termin-CTA + Notdienst -->
-      <div class="reveal reveal-d1 flex flex-col gap-6">
-        <!-- Termin-Box -->
-        <div class="rounded-3xl bg-sage-500 text-white p-8">
-          <h3 class="font-serif text-2xl">Lieber direkt anrufen?</h3>
-          <p class="mt-2 text-white/90 text-lg">Unser Team plant Ihren Termin gern persönlich – schnell und unkompliziert.</p>
-          <a href="tel:+49216640641" class="mt-6 inline-flex items-center gap-3 rounded-full bg-white text-sage-700 px-6 py-3.5 text-lg font-semibold hover:bg-sage-50 transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            02166 40641
-          </a>
-        </div>
-
-        <!-- Notdienst-Box -->
-        <div class="rounded-3xl bg-paper border border-line p-8">
-          <div class="flex items-center gap-3">
-            <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-50 text-sage-600">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4M12 17h.01"/></svg>
-            </span>
-            <h3 class="font-serif text-2xl text-ink">Zahnärztlicher Notdienst</h3>
-          </div>
-          <p class="mt-3 text-[1.05rem] text-ink-soft">Außerhalb unserer Sprechzeiten – an Wochenenden, Feiertagen und nachts:</p>
-          <a href="tel:+491805986700" class="mt-3 inline-flex items-center gap-2 text-xl font-semibold text-sage-700 hover:text-sage-600 transition-colors">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            0180-5 98 67 00
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: STELLENANGEBOT                                       -->
-<!-- ============================================================= -->
-<section id="karriere" class="pb-4">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="reveal rounded-3xl bg-sage-50 border border-sage-100 p-8 sm:p-12 flex flex-col lg:flex-row lg:items-center gap-8">
-      <div class="lg:flex-1">
-        <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-700">Karriere</span>
-        <h2 class="mt-3 font-serif text-[1.8rem] sm:text-[2.3rem] leading-[1.12] text-ink">Werden Sie Teil unseres Teams</h2>
-        <p class="mt-4 text-lg text-ink-soft max-w-2xl">Wir suchen eine <strong class="text-ink font-medium">zahnmedizinische Fachangestellte</strong> sowie <strong class="text-ink font-medium">Auszubildende</strong>. Über Ihre Bewerbung freuen wir uns.</p>
-      </div>
-      <!-- E-Mail als selektierbares Feld (kein Button) -->
-      <div class="shrink-0 inline-flex items-center gap-3 rounded-2xl bg-white border border-sage-200 px-6 py-4 shadow-sm">
-        <svg class="w-5 h-5 text-sage-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        <a href="mailto:info@drangelov.de?subject=Bewerbung" class="select-text text-lg font-medium text-ink hover:text-sage-700 transition-colors">info@drangelov.de</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================= -->
-<!-- SECTION: KONTAKT & ANFAHRT                                    -->
-<!-- ============================================================= -->
-<section id="kontakt" class="py-20 sm:py-28">
-  <div class="mx-auto max-w-content px-5 sm:px-8">
-    <div class="reveal max-w-2xl">
-      <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Kontakt &amp; Anfahrt</span>
-      <h2 class="mt-4 font-serif text-[2.1rem] sm:text-[2.7rem] leading-[1.1] text-ink">So finden Sie uns</h2>
-    </div>
-
-    <div class="mt-12 grid lg:grid-cols-[1fr_1.25fr] gap-8 items-stretch">
-
-      <!-- Kontaktdaten -->
-      <div class="reveal flex flex-col gap-4">
-        <!-- Adresse -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">Adresse</h3>
-            <p class="mt-1 text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
-          </div>
-        </div>
-        <!-- Telefon (Karte = div mit Hover; Link nur um die Nummer → drag-markierbar) -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">Telefon</h3>
-            <a href="tel:+49216640641" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
-          </div>
-        </div>
-        <!-- E-Mail (analog) -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
-          <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-          </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">E-Mail</h3>
-            <a href="mailto:info@drangelov.de" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
-          </div>
-        </div>
-
-        <!-- Route planen -->
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Limitenstra%C3%9Fe+173+41236+M%C3%B6nchengladbach" target="_blank" rel="noopener" class="mt-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-7 py-4 text-lg font-medium transition-colors">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-          Route planen
+      <div class="card-body">
+        <div class="card-no">Entwurf 3</div>
+        <h2 class="card-title">Premium &amp; ruhig</h2>
+        <p class="card-desc">Tiefes Tannengrün und Creme, vollflächiger dunkler Hero, feine Serife. Hochwertig und zurückhaltend — fast wie ein Magazin.</p>
+        <div class="swatches"><i style="background:#1e2c22"></i><i style="background:#f4f1e8"></i><i style="background:#97a888"></i></div>
+        <a class="card-cta" href="entwurf-3/">
+          Entwurf ansehen
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-      </div>
-
-      <!-- Karte (Google Maps Embed · Platzhalter-Slot) -->
-      <div class="reveal reveal-d1 rounded-3xl overflow-hidden border border-line min-h-[360px] bg-paper">
-        <!-- MAP-SLOT: bei Bedarf durch eigenes Embed / Datenschutz-konforme Lösung ersetzen -->
-        <iframe
-          title="Standort der Praxis Dr. Angelov auf Google Maps"
-          src="https://maps.google.com/maps?q=Limitenstra%C3%9Fe%20173%2C%2041236%20M%C3%B6nchengladbach&z=15&output=embed"
-          class="w-full h-full min-h-[360px] border-0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============================================================= -->
-<!-- SECTION: FOOTER                                               -->
-<!-- ============================================================= -->
-<footer class="bg-ink text-cream/80">
-  <div class="mx-auto max-w-content px-5 sm:px-8 py-14">
-    <div class="grid md:grid-cols-3 gap-10">
-
-      <!-- Praxis -->
-      <div>
-        <div class="flex items-center gap-3">
-          <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl">A</span>
-          <span class="font-serif text-xl text-cream">Dr. Emil Angelov</span>
+        <div class="card-sub">
+          <a href="entwurf-3/impressum.html">Impressum</a>
+          <a href="entwurf-3/datenschutz.html">Datenschutz</a>
         </div>
-        <p class="mt-4 text-cream/70 leading-relaxed">Zahnmedizin in Mönchengladbach.<br />Limitenstraße 173, 41236 Mönchengladbach</p>
-        <a href="tel:+49216640641" class="mt-4 inline-block text-cream hover:text-white font-medium">02166 40641</a>
       </div>
+    </article>
 
-      <!-- Sprechzeiten-Kurzform -->
-      <div>
-        <h4 class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-cream/50">Sprechzeiten</h4>
-        <ul class="mt-4 space-y-1.5 text-cream/75">
-          <li class="flex justify-between gap-4"><span>Mo–Di</span><span class="tabular-nums">08:15–13:00 · 13:30–17:30</span></li>
-          <li class="flex justify-between gap-4"><span>Mi</span><span class="tabular-nums">08:15–14:00</span></li>
-          <li class="flex justify-between gap-4"><span>Do</span><span class="tabular-nums">08:15–12:00 · 16:00–20:00</span></li>
-          <li class="flex justify-between gap-4"><span>Fr</span><span class="tabular-nums">08:15–14:00</span></li>
-        </ul>
-      </div>
-
-      <!-- Links -->
-      <div>
-        <h4 class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-cream/50">Rechtliches</h4>
-        <ul class="mt-4 space-y-2.5">
-          <li><a href="impressum.html" class="text-cream/75 hover:text-white transition-colors">Impressum</a></li>
-          <li><a href="datenschutz.html" class="text-cream/75 hover:text-white transition-colors">Datenschutz</a></li>
-          <li><a href="#kontakt" class="text-cream/75 hover:text-white transition-colors">Kontakt &amp; Anfahrt</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-2 justify-between text-[.92rem] text-cream/55">
-      <p>© <span id="year"></span> Praxis Dr. Emil Angelov · Alle Rechte vorbehalten.</p>
-      <p>Mönchengladbach · seit 2011</p>
-    </div>
   </div>
-</footer>
 
-<!-- ============================================================= -->
-<!-- SCRIPT: Vanilla-JS Interaktionen                              -->
-<!-- ============================================================= -->
-<script>
-  (function () {
-    'use strict';
+  <p class="note">Dies sind Gestaltungsentwürfe. Fotos sind Beispielbilder, Rechtstexte müssen vor Veröffentlichung geprüft werden.</p>
 
-    // --- Jahr im Footer ---
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <footer>
+    <div class="contact">
+      <span>Praxis Dr. Emil Angelov</span>
+      <a href="tel:+49216640641">02166 40641</a>
+      <a href="mailto:info@drangelov.de">info@drangelov.de</a>
+      <span>Limitenstraße 173, 41236 Mönchengladbach</span>
+    </div>
+    <p class="fine">© <span id="year"></span> · Website-Entwürfe</p>
+  </footer>
+</div>
 
-    // --- Sticky-Nav: transparent → solid ---
-    const header = document.getElementById('site-header');
-    const navBar = document.getElementById('nav-bar');
-    function onScroll() {
-      const solid = window.scrollY > 24;
-      header.classList.toggle('bg-paper/90', solid);
-      header.classList.toggle('backdrop-blur-md', solid);
-      header.classList.toggle('shadow-[0_1px_0_rgba(231,225,214,1),0_8px_30px_-18px_rgba(44,42,37,.3)]', solid);
-      navBar.classList.toggle('h-[64px]', solid);
-      navBar.classList.toggle('h-[72px]', !solid);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // --- Mobile-Burger ---
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('mobile-menu');
-    const iconOpen = document.getElementById('burger-open');
-    const iconClose = document.getElementById('burger-close');
-    function setMenu(open) {
-      menu.classList.toggle('open', open);
-      iconOpen.classList.toggle('hidden', open);
-      iconClose.classList.toggle('hidden', !open);
-      burger.setAttribute('aria-expanded', String(open));
-      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
-    }
-    burger.addEventListener('click', function () {
-      setMenu(!menu.classList.contains('open'));
-    });
-    document.querySelectorAll('.mobile-link, #mobile-menu a[href^="tel"]').forEach(function (a) {
-      a.addEventListener('click', function () { setMenu(false); });
-    });
-
-    // --- Reveal-on-scroll ---
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealEls = document.querySelectorAll('.reveal');
-    if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach(function (el) { el.classList.add('in'); });
-    } else {
-      const io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
-      revealEls.forEach(function (el) { io.observe(el); });
-    }
-
-    // --- Carousel (Praxis-Einblicke, später erweiterbar) ---
-    document.querySelectorAll('[data-carousel]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const track = document.getElementById('carousel-' + btn.dataset.carousel);
-        if (!track) return;
-        const card = track.querySelector(':scope > *');
-        const step = card ? card.getBoundingClientRect().width + 20 : track.clientWidth * 0.8;
-        track.scrollBy({ left: step * Number(btn.dataset.dir), behavior: 'smooth' });
-      });
-    });
-  })();
-</script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 </body>
 </html>

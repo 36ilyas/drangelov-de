@@ -21,3 +21,10 @@ desktop.ini
 # Lokale Archive
 *.tar.gz
 *.zip
+
+# Claude-Design-Handoff-Bundles (nur lokal als Referenz, nicht Teil der Website)
+design-bundle/
+new-bundle/
+
+# Persönliche Planungsnotizen (lokal)
+QNA.md
