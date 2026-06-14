@@ -12,8 +12,7 @@
 </head>
 <body>
 
-<header class="hero" id="start" data-screen-label="Hero">
-  <div class="hero-scrim"></div>
+<header class="site-header" id="siteHeader">
   <nav class="nav">
     <div class="nav-links">
       <a href="#leistungen">Leistungen</a>
@@ -25,7 +24,21 @@
       <a href="#sprechzeiten">Sprechzeiten</a>
       <a href="#kontakt">Kontakt</a>
     </div>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#praxis">Praxis</a>
+    <a href="#team">Team</a>
+    <a href="#sprechzeiten">Sprechzeiten</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<section class="hero" id="start" data-screen-label="Hero">
+  <div class="hero-scrim"></div>
   <div class="hero-inner">
     <div class="label">Zahnarztpraxis · Mönchengladbach</div>
     <h1>Zahnmedizin mit Ruhe, Sorgfalt und Anspruch</h1>
@@ -36,7 +49,7 @@
       <a class="btn outline" href="#leistungen">Unsere Leistungen</a>
     </div>
   </div>
-</header>
+</section>
 
 <section class="section" id="leistungen" data-screen-label="Leistungen">
   <div class="container">
@@ -108,6 +121,9 @@
       <div class="contact-col"><span class="label">Telefon</span><p class="big"><a href="tel:0216640641">02166 40641</a></p></div>
       <div class="contact-col"><span class="label">E-Mail</span><p><a href="mailto:info@drangelov.de">info@drangelov.de</a></p></div>
     </div>
+    <div class="map">
+      <iframe title="Standort der Praxis Dr. Angelov auf Google Maps" src="https://maps.google.com/maps?q=Limitenstra%C3%9Fe%20173%2C%2041236%20M%C3%B6nchengladbach&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </section>
 
@@ -120,6 +136,38 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  'use strict';
+  var header = document.getElementById('siteHeader');
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Transparent → solid beim Scrollen
+  function onScroll() {
+    if (header) { header.classList.toggle('scrolled', window.scrollY > 24); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Burger-Menü
+  if (burger && menu) {
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Menü öffnen');
+      });
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

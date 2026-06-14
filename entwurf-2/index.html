@@ -18,11 +18,11 @@
       <span>Limitenstraße 173 · 41236 Mönchengladbach</span>
       <span>Mo–Fr ab 08:15 Uhr</span>
     </div>
-    <span>Tel. <a href="tel:0216640641">02166 40641</a></span>
+    <span class="tb-phone">Tel. <a href="tel:0216640641">02166 40641</a></span>
   </div>
 </div>
 
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="container">
     <a class="logo" href="#start">
       <div class="logo-mark">A</div>
@@ -38,7 +38,22 @@
       <a href="#sprechzeiten">Sprechzeiten</a>
       <a href="#kontakt">Kontakt</a>
     </div>
-    <a class="btn primary" href="tel:0216640641">Termin vereinbaren</a>
+    <div class="nav-actions">
+      <a class="btn primary nav-cta-text" href="tel:0216640641">Termin vereinbaren</a>
+      <a class="btn primary nav-cta-icon" href="tel:0216640641" aria-label="Praxis anrufen: 02166 40641">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#praxis">Praxis</a>
+    <a href="#team">Team</a>
+    <a href="#sprechzeiten">Sprechzeiten</a>
+    <a href="#kontakt">Kontakt</a>
   </div>
 </nav>
 
@@ -150,9 +165,7 @@
         <div class="contact-line"><b>Anfahrt</b><span>Gut erreichbar mit Bus &amp; Bahn, Parkplätze in der Nähe</span></div>
       </div>
       <div class="map">
-        <b>Kartenausschnitt</b>
-        <span>Limitenstraße 173 · 41236 Mönchengladbach</span>
-        <span>(Google-Maps-Einbindung im finalen Build)</span>
+        <iframe title="Standort der Praxis Dr. Angelov auf Google Maps" src="https://maps.google.com/maps?q=Limitenstra%C3%9Fe%20173%2C%2041236%20M%C3%B6nchengladbach&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
@@ -167,6 +180,41 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  'use strict';
+  var topbar = document.querySelector('.topbar');
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+
+  // Header-Höhe (Topbar + Nav) als CSS-Variable → Hero füllt exakt den Rest
+  function setHeaderVar() {
+    var h = (topbar ? topbar.offsetHeight : 0) + (nav ? nav.offsetHeight : 0);
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  setHeaderVar();
+  window.addEventListener('resize', setHeaderVar);
+  window.addEventListener('load', setHeaderVar);
+
+  // Burger-Menü
+  if (burger && menu) {
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Menü öffnen');
+      });
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
