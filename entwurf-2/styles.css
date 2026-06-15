@@ -161,8 +161,7 @@ section { scroll-margin-top: 96px; }
   .hours td:last-child { text-align: left; font-size: 16px; margin-top: 3px; }
   .section { padding: 64px 0; }
   .container { padding: 0 20px; }
-  .hero { align-items: flex-start; }
-  .hero-inner { padding: 40px 0 32px; }
+  .hero-inner { padding: 36px 0; }
   .hero h1 { font-size: 30px; margin-bottom: 16px; }
   .hero p { font-size: 16.5px; margin-bottom: 26px; }
   .btn { padding: 13px 18px; font-size: 15px; }
