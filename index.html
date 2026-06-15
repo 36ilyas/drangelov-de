@@ -122,6 +122,21 @@
   .card-sub a { font-size: 0.84rem; color: var(--muted); text-decoration: none; }
   .card-sub a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
+  /* ---------- QR-Code ---------- */
+  .qr-card { display: flex; align-items: center; gap: 30px; max-width: 720px; margin: 4px auto 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 22px 28px; box-shadow: 0 1px 2px rgba(41,39,35,0.04); }
+  .qr-frame { flex: none; width: 180px; height: 180px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 8px; }
+  .qr-img { width: 100%; height: 100%; display: block; }
+  .qr-text { text-align: left; }
+  .qr-text .eyebrow { margin-bottom: 8px; }
+  .qr-h { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem; line-height: 1.15; color: var(--ink); margin-bottom: 8px; }
+  .qr-text p { font-size: 0.97rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .qr-link { font-size: 0.92rem; font-weight: 600; color: var(--accent-dark); text-decoration: none; word-break: break-all; }
+  .qr-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 560px) {
+    .qr-card { flex-direction: column; text-align: center; gap: 18px; padding: 24px; }
+    .qr-text { text-align: center; }
+  }
+
   /* ---------- Hinweis ---------- */
   .note {
     margin: 24px auto 0; max-width: 760px; text-align: center;
@@ -149,6 +164,19 @@
     <h1>Drei Vorschläge für Ihren<br />neuen Praxis-Auftritt</h1>
     <p class="lede">Jeder Entwurf enthält dieselben Inhalte — Leistungen, Team, Sprechzeiten, Notdienst und Kontakt — in einer eigenen gestalterischen Handschrift. Schauen Sie sich in Ruhe um und wählen Sie Ihren Favoriten.</p>
   </header>
+
+  <!-- QR-Code: führt auf diese Übersichtsseite. Offline als Inline-SVG eingebettet, kein externer Dienst. -->
+  <div class="qr-card">
+    <div class="qr-frame">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222 222" class="qr-img" role="img" aria-label="QR-Code zum Öffnen dieser Vorschau-Website auf dem Smartphone"><g transform="scale(6)"><path fill="#fff" d="M0 0h37v37h-37z"/><path stroke="#2c2a25" d="M4 4.5h7m2 0h2m1 0h1m3 0h4m2 0h7m-29 1h1m5 0h1m3 0h3m1 0h4m4 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h5m2 0h2m1 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m2 0h1m4 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h5m4 0h4m1 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h2m4 0h1m1 0h1m3 0h1m-21 1h1m1 0h5m2 0h1m2 0h2m1 0h3m2 0h1m1 0h5m-26 1h3m3 0h1m5 0h1m2 0h5m1 0h3m3 0h1m-28 1h1m1 0h5m1 0h1m1 0h7m3 0h2m1 0h1m-25 1h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m6 0h1m1 0h1m1 0h1m-27 1h1m3 0h5m1 0h2m4 0h3m5 0h2m-26 1h1m1 0h1m4 0h1m1 0h2m4 0h9m3 0h1m-29 1h7m1 0h5m2 0h1m1 0h1m3 0h1m1 0h4m-27 1h2m2 0h2m1 0h1m2 0h3m2 0h2m3 0h1m6 0h1m-25 1h4m1 0h2m1 0h2m4 0h1m2 0h1m4 0h2m-27 1h2m7 0h3m1 0h1m2 0h1m1 0h3m1 0h3m1 0h1m1 0h1m-29 1h1m1 0h6m1 0h1m1 0h6m3 0h2m4 0h1m-27 1h1m1 0h2m4 0h1m1 0h4m1 0h2m1 0h1m3 0h3m2 0h1m-28 1h1m2 0h4m1 0h1m1 0h2m2 0h2m1 0h1m1 0h6m1 0h3m-21 1h2m1 0h1m4 0h1m3 0h1m3 0h5m-29 1h7m2 0h1m1 0h2m2 0h6m1 0h1m1 0h3m-27 1h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m3 0h1m3 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m2 0h5m1 0h1m-27 1h1m1 0h3m1 0h1m1 0h1m1 0h5m1 0h1m1 0h4m1 0h1m1 0h4m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2m1 0h2m1 0h4m-28 1h1m5 0h1m2 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h2m3 0h1m-28 1h7m1 0h1m2 0h2m4 0h1m1 0h1m1 0h2m1 0h3"/></g></svg>
+    </div>
+    <div class="qr-text">
+      <div class="eyebrow">Direkt aufs Smartphone</div>
+      <h2 class="qr-h">QR-Code scannen &amp; mitschauen</h2>
+      <p>Handy-Kamera auf den Code richten — dann öffnet sich diese Übersicht mit allen drei Entwürfen direkt auf Ihrem Gerät.</p>
+      <a class="qr-link" href="https://36ilyas.github.io/drangelov-de/">36ilyas.github.io/drangelov-de</a>
+    </div>
+  </div>
 
   <div class="cards">
 
