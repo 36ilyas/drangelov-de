@@ -155,12 +155,14 @@
   if (burger && menu) {
     burger.addEventListener('click', function () {
       var open = menu.classList.toggle('open');
+      if (header) header.classList.toggle('nav-solid', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
     });
     menu.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         menu.classList.remove('open');
+        if (header) header.classList.remove('nav-solid');
         burger.setAttribute('aria-expanded', 'false');
         burger.setAttribute('aria-label', 'Menü öffnen');
       });
