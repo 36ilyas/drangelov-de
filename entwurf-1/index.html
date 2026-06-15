@@ -76,6 +76,9 @@
   .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
   .mobile-menu.open { max-height: 460px; }
 
+  /* Lange deutsche Komposita (z. B. „Behandlungsmethoden") in den schmalen Karten umbrechen */
+  #praxis .flex h3, #praxis .flex p { overflow-wrap: break-word; hyphens: auto; }
+
   /* Mobile-Feinschliff: kompakter Hero + kleinere Texte + saubere Sprechzeiten */
   @media (max-width: 640px) {
     #hero { padding-top: 16px; padding-bottom: 24px; }
@@ -153,7 +156,7 @@
 <!-- ============================================================= -->
 <!-- SECTION: HERO (Split-Layout, Text links · Bild rechts)        -->
 <!-- ============================================================= -->
-<section id="hero" class="relative pt-10 pb-12 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+<section id="hero" class="relative pt-10 pb-12 sm:pt-16 sm:pb-24 lg:pt-10 lg:pb-10">
   <div class="mx-auto max-w-content px-5 sm:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-center">
 
@@ -164,7 +167,7 @@
           Familienpraxis seit 2011
         </span>
 
-        <h1 class="mt-6 font-serif text-[2.5rem] leading-[1.08] sm:text-[3.4rem] lg:text-[3.9rem] text-ink">
+        <h1 class="mt-6 font-serif text-[2.5rem] leading-[1.08] sm:text-[3.4rem] lg:text-[3.1rem] text-ink">
           Praxis<br /><span class="text-sage-600">Dr. Emil Angelov</span>
         </h1>
 
@@ -196,7 +199,7 @@
       <!-- Hero-Bild (auf Mobile ausgeblendet, damit der Hero komplett in den Viewport passt) -->
       <!-- UNSPLASH: "modern dental practice interior, warm lighting" -->
       <div class="reveal reveal-d1 hidden sm:block">
-        <div class="img-slot aspect-[4/5] sm:aspect-[5/5] lg:aspect-[4/5] rounded-[28px] shadow-[0_30px_60px_-30px_rgba(44,42,37,.35)] ring-1 ring-black/5">
+        <div class="img-slot aspect-[4/5] sm:aspect-[5/5] lg:aspect-auto lg:max-h-[460px] lg:h-[460px] rounded-[28px] shadow-[0_30px_60px_-30px_rgba(44,42,37,.35)] ring-1 ring-black/5">
           <span class="slot-label">Praxisfoto · helle, warme Praxisräume</span>
           <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Moderne, helle Zahnarztpraxis von Dr. Angelov" loading="eager" onerror="this.style.display='none'" />
         </div>
