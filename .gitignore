@@ -18,6 +18,9 @@ desktop.ini
 .vscode/
 .idea/
 
+# Playwright-Verifikations-Artefakte (lokal)
+.playwright-mcp/
+
 # Lokale Archive
 *.tar.gz
 *.zip
@@ -28,3 +31,5 @@ new-bundle/
 
 # Persönliche Planungsnotizen (lokal)
 QNA.md
+gespraech-vorbereitung/
+Angelov/
