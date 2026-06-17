@@ -93,6 +93,19 @@
     #sprechzeiten ul li { flex-direction: column; align-items: flex-start; gap: 3px; }
     #sprechzeiten ul li span:last-child { font-size: 1rem; }
   }
+
+  /* Hero füllt ab Desktop die volle Bildschirmhöhe → kein Durchblick ins nächste
+     Segment. Reagiert automatisch auf Fenstergröße, F11-Vollbild und Zoom (dvh).
+     72px = Höhe der Top-Navigation; vh-Zeile als Fallback für alte Browser. */
+  @media (min-width: 1024px) {
+    #hero {
+      min-height: calc(100vh - 72px);
+      min-height: calc(100dvh - 72px);
+      display: flex;
+      align-items: center;
+    }
+    #hero > div { width: 100%; }
+  }
 </style>
 </head>
 
