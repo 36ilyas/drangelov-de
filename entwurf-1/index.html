@@ -337,52 +337,122 @@
       <p class="mt-5 text-lg text-ink-soft">Erfahrene Zahnärztinnen und Zahnärzte, die sich Zeit nehmen – für Ihre Gesundheit und Ihr gutes Gefühl.</p>
     </div>
 
-    <!-- TEAM-KARTEN: Struktur bewusst gleichförmig, damit Karussell/weitere Mitglieder leicht ergänzbar sind -->
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Ärzte (groß · aktuelle Kartenform: Bild oben, Text darunter) -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
 
-      <!-- Karte: Emil Angelov -->
-      <article class="reveal group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
-        <!-- UNSPLASH: "professional dentist portrait, friendly, white coat" -->
+      <!-- Dr. Emil Angelov -->
+      <article class="reveal rounded-3xl bg-cream border border-line overflow-hidden">
         <div class="img-slot aspect-[4/5]">
           <span class="slot-label">Porträt · Dr. E. Angelov</span>
-          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" alt="Dr. med. dent. Emil Angelov" loading="lazy" onerror="this.style.display='none'" />
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80" alt="Dr. med. dent. Emil Angelov" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Emil Angelov</h3>
-          <p class="mt-1 text-sage-600 font-medium">Praxisinhaber</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Gründer der Praxis. Schwerpunkte in Zahnerhaltung und Prothetik – mit dem Blick fürs Ganze.</p>
-        </div>
-      </article>
-
-      <!-- Karte: Platzhalter (Teammitglied) -->
-      <article class="reveal reveal-d1 group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
-        <div class="img-slot aspect-[4/5]">
-          <span class="slot-label">Porträt · Teammitglied</span>
-          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=700&q=80" alt="Platzhalter-Porträt eines Teammitglieds" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Max Mustermann</h3>
-          <p class="mt-1 text-sage-600 font-medium">Zahnarzt</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Weiteres Mitglied unseres Praxisteams.</p>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ink">Dr. med. dent. Emil Angelov</h3>
+          <p class="mt-1 text-lg text-sage-600 font-medium">Praxisinhaber</p>
+          <p class="mt-3 text-[1.05rem] text-ink-soft">Gründer der Praxis mit Schwerpunkten in Zahnerhaltung, Implantologie und Prothetik – mit dem Blick fürs Ganze und langjähriger Erfahrung.</p>
         </div>
       </article>
 
-      <!-- Karte: Dilyana Georgiev -->
-      <article class="reveal reveal-d2 group rounded-3xl bg-paper border border-line overflow-hidden transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(44,42,37,.4)]">
+      <!-- Dr. Dilyana Georgiev -->
+      <article class="reveal reveal-d1 rounded-3xl bg-cream border border-line overflow-hidden">
         <div class="img-slot aspect-[4/5]">
           <span class="slot-label">Porträt · Dr. D. Georgiev</span>
-          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" alt="Dr. med. dent. Dilyana Georgiev" loading="lazy" onerror="this.style.display='none'" />
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80" alt="Dr. med. dent. Dilyana Georgiev" loading="lazy" onerror="this.style.display='none'" />
         </div>
-        <div class="p-6">
-          <h3 class="font-serif text-2xl text-ink">Dr. med. dent. Dilyana Georgiev</h3>
-          <p class="mt-1 text-sage-600 font-medium">Zahnärztin</p>
-          <p class="mt-3 text-[1.02rem] text-ink-soft">Einfühlsame Betreuung – mit besonderem Gespür für ängstliche Patienten und Kinder.</p>
+        <div class="p-7 sm:p-8">
+          <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ink">Dr. med. dent. Dilyana Georgiev</h3>
+          <p class="mt-1 text-lg text-sage-600 font-medium">Zahnärztin</p>
+          <p class="mt-3 text-[1.05rem] text-ink-soft">Einfühlsame Behandlung mit besonderem Gespür für ängstliche Patientinnen, Patienten und Kinder.</p>
         </div>
       </article>
 
     </div>
+
+    <!-- Praxisteam (Karussell · Klick öffnet Bio) -->
+    <div class="reveal mt-16 sm:mt-20">
+      <div class="flex items-end justify-between gap-4 mb-5">
+        <div>
+          <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Praxisteam</span>
+          <h3 class="mt-2 font-serif text-2xl sm:text-3xl text-ink">Unser herzliches Team</h3>
+          <p class="mt-2 text-ink-soft">Tippen oder klicken Sie auf ein Foto für mehr über die Person.</p>
+        </div>
+        <div class="hidden sm:flex gap-2 shrink-0">
+          <button data-carousel="team" data-dir="-1" aria-label="Zurück" class="grid place-items-center w-11 h-11 rounded-full bg-white border border-line hover:border-sage-400 text-ink transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button data-carousel="team" data-dir="1" aria-label="Weiter" class="grid place-items-center w-11 h-11 rounded-full bg-white border border-line hover:border-sage-400 text-ink transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="carousel-team" class="team-carousel carousel flex gap-6 lg:gap-7 overflow-x-auto py-5 cursor-grab select-none">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Caroline Rzesnitzek" data-role="Anmeldung" data-bio="An unserer Anmeldung sorgt Caroline dafür, dass Sie sich vom ersten Moment an willkommen und gut aufgehoben fühlen.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Caroline R.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Caroline Rzesnitzek</h4><p class="text-sage-600 font-medium">Anmeldung</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Galina Knorr" data-role="Anmeldung &amp; Assistenz" data-bio="Galina ist an der Anmeldung und in der Assistenz für Sie da – mit einem offenen Ohr und einer ruhigen Hand.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Galina K.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Galina Knorr</h4><p class="text-sage-600 font-medium">Anmeldung &amp; Assistenz</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Dzanet Tabaczyk" data-role="Prophylaxe" data-bio="In der Prophylaxe kümmert sich Dzanet einfühlsam um die Gesundheit und das Strahlen Ihrer Zähne.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Dzanet T.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Dzanet Tabaczyk</h4><p class="text-sage-600 font-medium">Prophylaxe</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Filiz Yalcin" data-role="Assistenz" data-bio="Filiz unterstützt unsere Behandlungen mit Sorgfalt, einem wachen Blick und einem freundlichen Lächeln.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Filiz Y.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Filiz Yalcin</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Jessica Akulov" data-role="Assistenz" data-bio="Jessica steht unserem Behandlungsteam zuverlässig zur Seite – aufmerksam, herzlich und mit ruhiger Hand.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Jessica A.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Jessica Akulov</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Christina Weiland" data-role="Assistenz" data-bio="Christina sorgt in der Assistenz für reibungslose Abläufe und eine angenehme, entspannte Atmosphäre.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Christina W.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Christina Weiland</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="David Faust" data-role="Labor" data-bio="In unserem praxiseigenen Labor fertigt David hochwertigen Zahnersatz mit Präzision und Liebe zum Detail.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · David F.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">David Faust</h4><p class="text-sage-600 font-medium">Labor</p></div>
+        </button>
+
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Martin Angelov" data-role="Labor" data-bio="Martin bringt im Labor sein handwerkliches Können für passgenaue, ästhetische Ergebnisse ein.">
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Martin A.</span></div>
+          <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Martin Angelov</h4><p class="text-sage-600 font-medium">Labor</p></div>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- Team-Bio-Modal (Klick auf ein Praxisteam-Foto · Hintergrund weichgezeichnet) -->
+<div id="team-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-5">
+  <div id="team-modal-backdrop" class="absolute inset-0 bg-ink/40 backdrop-blur-md"></div>
+  <div class="relative w-full max-w-md rounded-3xl bg-paper border border-line shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="team-modal-name">
+    <button id="team-modal-close" type="button" aria-label="Schließen" class="absolute top-3 right-3 z-10 grid place-items-center w-9 h-9 rounded-full bg-white/90 border border-line text-ink hover:bg-white transition-colors">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="flex gap-4 p-5 items-center border-b border-line">
+      <div class="img-slot w-24 h-28 rounded-2xl shrink-0 ring-1 ring-black/5 overflow-hidden">
+        <span class="slot-label" id="team-modal-photolabel" style="font-size:.58rem; letter-spacing:.02em;">Porträt</span>
+        <img id="team-modal-img" alt="" style="display:none" />
+      </div>
+      <div class="min-w-0">
+        <h4 id="team-modal-name" class="font-serif text-xl text-ink"></h4>
+        <p id="team-modal-role" class="mt-0.5 text-sage-600 font-medium"></p>
+      </div>
+    </div>
+    <div class="p-5">
+      <p id="team-modal-bio" class="text-[1.05rem] text-ink-soft leading-relaxed"></p>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================= -->
 <!-- SECTION: LEISTUNGEN (Grid · 6 Tiles)                          -->
@@ -844,6 +914,62 @@
         slot.appendChild(iframe);
       });
     }
+
+    // --- Praxisteam: Maus-Drag-Scrollen + Bio-Modal ---
+    (function () {
+      const track = document.getElementById('carousel-team');
+      const modal = document.getElementById('team-modal');
+      if (!track || !modal) return;
+
+      // Drag-to-scroll mit der Maus (Touch/Wisch funktioniert nativ)
+      let down = false, startX = 0, startScroll = 0, dragged = false;
+      track.addEventListener('mousedown', function (e) {
+        down = true; dragged = false; startX = e.pageX; startScroll = track.scrollLeft;
+        track.classList.remove('cursor-grab'); track.classList.add('cursor-grabbing');
+      });
+      window.addEventListener('mousemove', function (e) {
+        if (!down) return;
+        const dx = e.pageX - startX;
+        if (Math.abs(dx) > 6) { dragged = true; track.scrollLeft = startScroll - dx; }
+      });
+      window.addEventListener('mouseup', function () {
+        if (!down) return;
+        down = false; track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
+      });
+
+      // Bio-Modal
+      const imgEl = document.getElementById('team-modal-img');
+      const photoLabel = document.getElementById('team-modal-photolabel');
+      const nameEl = document.getElementById('team-modal-name');
+      const roleEl = document.getElementById('team-modal-role');
+      const bioEl = document.getElementById('team-modal-bio');
+      function openModal(card) {
+        nameEl.textContent = card.dataset.name || '';
+        roleEl.textContent = card.dataset.role || '';
+        bioEl.textContent = card.dataset.bio || '';
+        if (photoLabel) photoLabel.textContent = card.dataset.name || 'Porträt';
+        const src = card.dataset.img || '';
+        if (src) { imgEl.src = src; imgEl.alt = card.dataset.name || ''; imgEl.style.display = ''; }
+        else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.add('hidden'); modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+      track.querySelectorAll('.team-card').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (dragged) { dragged = false; e.preventDefault(); return; } // war ein Drag, kein Klick
+          openModal(card);
+        });
+      });
+      document.getElementById('team-modal-close').addEventListener('click', closeModal);
+      document.getElementById('team-modal-backdrop').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
+    })();
   })();
 </script>
 
