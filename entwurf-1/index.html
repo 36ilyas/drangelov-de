@@ -100,7 +100,7 @@
      72px = Höhe der Top-Navigation; vh-Zeile als Fallback für ältere Browser. */
   #hero {
     min-height: calc(100vh - 72px);
-    min-height: calc(100dvh - 72px);
+    min-height: calc(100svh - 72px);
     display: flex;
     align-items: center;
   }
@@ -127,11 +127,12 @@
       </a>
 
       <!-- Desktop-Links -->
-      <div class="hidden lg:flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-6">
         <a href="#team"        class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Team</a>
         <a href="#praxis"      class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Praxis</a>
         <a href="#leistungen"  class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Leistungen</a>
         <a href="#sprechzeiten"class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Sprechzeiten</a>
+        <a href="#urlaub" class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Schließzeiten</a>
         <a href="#kontakt"     class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Kontakt</a>
         <a href="tel:+49216640641" class="inline-flex items-center gap-2 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-5 py-2.5 text-[.95rem] font-medium transition-colors shadow-sm">
           <!-- icon: phone -->
@@ -155,6 +156,7 @@
       <a href="#praxis"       class="mobile-link py-3.5 text-lg border-b border-line/70">Praxis</a>
       <a href="#leistungen"   class="mobile-link py-3.5 text-lg border-b border-line/70">Leistungen</a>
       <a href="#sprechzeiten" class="mobile-link py-3.5 text-lg border-b border-line/70">Sprechzeiten</a>
+      <a href="#urlaub" class="mobile-link py-3.5 text-lg border-b border-line/70">Schließzeiten</a>
       <a href="#kontakt"      class="mobile-link py-3.5 text-lg border-b border-line/70">Kontakt</a>
       <a href="tel:+49216640641" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-sage-500 text-white px-6 py-4 text-lg font-medium">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -388,42 +390,42 @@
 
       <div id="carousel-team" class="team-carousel carousel flex gap-6 lg:gap-7 overflow-x-auto py-5 cursor-grab select-none">
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Caroline Rzesnitzek" data-role="Anmeldung" data-bio="An unserer Anmeldung sorgt Caroline dafür, dass Sie sich vom ersten Moment an willkommen und gut aufgehoben fühlen.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Caroline R.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Caroline R.</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Caroline Rzesnitzek" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Caroline Rzesnitzek</h4><p class="text-sage-600 font-medium">Anmeldung</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Galina Knorr" data-role="Anmeldung &amp; Assistenz" data-bio="Galina ist an der Anmeldung und in der Assistenz für Sie da – mit einem offenen Ohr und einer ruhigen Hand.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Galina K.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Galina K.</span><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="Galina Knorr" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Galina Knorr</h4><p class="text-sage-600 font-medium">Anmeldung &amp; Assistenz</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Dzanet Tabaczyk" data-role="Prophylaxe" data-bio="In der Prophylaxe kümmert sich Dzanet einfühlsam um die Gesundheit und das Strahlen Ihrer Zähne.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Dzanet T.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Dzanet T.</span><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Dzanet Tabaczyk" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Dzanet Tabaczyk</h4><p class="text-sage-600 font-medium">Prophylaxe</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Filiz Yalcin" data-role="Assistenz" data-bio="Filiz unterstützt unsere Behandlungen mit Sorgfalt, einem wachen Blick und einem freundlichen Lächeln.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Filiz Y.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Filiz Y.</span><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Filiz Yalcin" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Filiz Yalcin</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Jessica Akulov" data-role="Assistenz" data-bio="Jessica steht unserem Behandlungsteam zuverlässig zur Seite – aufmerksam, herzlich und mit ruhiger Hand.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Jessica A.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Jessica A.</span><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Jessica Akulov" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Jessica Akulov</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Christina Weiland" data-role="Assistenz" data-bio="Christina sorgt in der Assistenz für reibungslose Abläufe und eine angenehme, entspannte Atmosphäre.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Christina W.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Christina W.</span><img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?auto=format&fit=crop&w=600&q=80" alt="Christina Weiland" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Christina Weiland</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="David Faust" data-role="Labor" data-bio="In unserem praxiseigenen Labor fertigt David hochwertigen Zahnersatz mit Präzision und Liebe zum Detail.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · David F.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · David F.</span><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="David Faust" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">David Faust</h4><p class="text-sage-600 font-medium">Labor</p></div>
         </button>
 
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Martin Angelov" data-role="Labor" data-bio="Martin bringt im Labor sein handwerkliches Können für passgenaue, ästhetische Ergebnisse ein.">
-          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Martin A.</span></div>
+          <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Martin A.</span><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Martin Angelov" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Martin Angelov</h4><p class="text-sage-600 font-medium">Labor</p></div>
         </button>
       </div>
@@ -741,44 +743,31 @@
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">Adresse</h3>
-            <p class="mt-1 text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
-          </div>
+          <p class="text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
         </div>
         <!-- Telefon (Karte = div mit Hover; Link nur um die Nummer → drag-markierbar) -->
         <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">Telefon</h3>
-            <a href="tel:+49216640641" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
-          </div>
+          <a href="tel:+49216640641" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
         </div>
         <!-- E-Mail (analog) -->
         <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">E-Mail</h3>
-            <a href="mailto:info@drangelov.de" class="mt-1 inline-block text-[1.05rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
-          </div>
+          <a href="mailto:info@drangelov.de" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
         </div>
         <!-- Öffentliche Anbindung / nächste Haltestellen -->
         <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg>
           </span>
-          <div>
-            <h3 class="font-medium text-ink text-lg">Öffentliche Anbindung</h3>
-            <p class="mt-1 text-[1.02rem] text-ink-soft">Nächste Haltestellen:</p>
-            <ul class="mt-2 space-y-2 text-[1.02rem] text-ink-soft">
-              <li><strong class="text-ink font-medium">Mönchengladbach Theater</strong><br />Linien 001 · 002 · 020 · 097</li>
-              <li><strong class="text-ink font-medium">Rostockerstraße</strong><br />Linie 020</li>
-            </ul>
-          </div>
+          <ul class="space-y-1.5 text-[1.02rem] text-ink-soft">
+            <li><strong class="text-ink font-medium">Mönchengladbach Theater</strong> — Linien 001 · 002 · 020 · 097</li>
+            <li><strong class="text-ink font-medium">Rostockerstraße</strong> — Linie 020</li>
+          </ul>
         </div>
 
         <!-- Route planen -->
@@ -976,7 +965,7 @@
         roleEl.textContent = card.dataset.role || '';
         bioEl.textContent = card.dataset.bio || '';
         if (photoLabel) photoLabel.textContent = card.dataset.name || 'Porträt';
-        const src = card.dataset.img || '';
+        const ci = card.querySelector('img'); const src = ci ? ci.getAttribute('src') : (card.dataset.img || '');
         if (src) { imgEl.src = src; imgEl.alt = card.dataset.name || ''; imgEl.style.display = ''; }
         else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
         modal.classList.remove('hidden'); modal.classList.add('flex');
