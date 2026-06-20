@@ -113,18 +113,8 @@
   .team-card.is-open .ts-cap { opacity:1; }
   .ts-cap__bio { color:#fff; font-size:.92rem; line-height:1.5; transform:translateY(10px); opacity:0; transition:opacity .35s ease .08s, transform .35s ease .08s; }
   .team-card.is-open .ts-cap__bio { transform:none; opacity:1; }
-  .team-hint-active .img-slot img { filter: brightness(.62); }
-  .team-hint { position:absolute; top:30%; left:50%; z-index:5; pointer-events:none; text-align:center; color:#fff; filter:drop-shadow(0 2px 9px rgba(0,0,0,.6)); opacity:0; transform:translateX(-50%); animation: ts-hint 5.8s ease forwards; }
-  .team-hint svg { display:block; margin:0 auto; }
-  .team-hint__label { display:block; margin-top:.45rem; font-size:.72rem; letter-spacing:.03em; }
-  @keyframes ts-hint {
-    0% { opacity:0; transform:translate(-50%,-4px); }
-    9% { opacity:1; transform:translate(-50%,-4px); }
-    72% { opacity:1; transform:translate(-50%,-15px); }
-    90%,100% { opacity:0; transform:translate(-50%,-18px); }
-  }
+  .team-carousel { scroll-snap-type: none; }  /* freies, smoothes Wischen statt hartem Einrasten */
   @media (prefers-reduced-motion: reduce) {
-    .team-hint { animation:none; opacity:0; }
     .team-card .img-slot img, .ts-cap, .ts-cap__bio { transition:none; }
   }
 </style>
@@ -150,8 +140,8 @@
 
       <!-- Desktop-Links -->
       <div class="hidden lg:flex items-center gap-7">
-        <a href="#team"        class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Team</a>
         <a href="#praxis"      class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Praxis</a>
+        <a href="#team"        class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Team</a>
         <a href="#leistungen"  class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Leistungen</a>
         <a href="#sprechzeiten"class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Sprechzeiten</a>
         <a href="#urlaub" class="text-[.95rem] text-ink-soft hover:text-ink transition-colors">Schließzeiten</a>
@@ -174,8 +164,8 @@
   <!-- Mobile-Menü -->
   <div id="mobile-menu" class="mobile-menu lg:hidden bg-paper border-t border-line shadow-lg">
     <div class="px-5 py-4 flex flex-col">
-      <a href="#team"         class="mobile-link py-3.5 text-lg border-b border-line/70">Team</a>
       <a href="#praxis"       class="mobile-link py-3.5 text-lg border-b border-line/70">Praxis</a>
+      <a href="#team"         class="mobile-link py-3.5 text-lg border-b border-line/70">Team</a>
       <a href="#leistungen"   class="mobile-link py-3.5 text-lg border-b border-line/70">Leistungen</a>
       <a href="#sprechzeiten" class="mobile-link py-3.5 text-lg border-b border-line/70">Sprechzeiten</a>
       <a href="#urlaub" class="mobile-link py-3.5 text-lg border-b border-line/70">Schließzeiten</a>
@@ -410,7 +400,7 @@
         </div>
       </div>
 
-      <div id="carousel-team" class="team-carousel carousel flex gap-6 lg:gap-7 overflow-x-auto py-5 cursor-grab select-none">
+      <div id="carousel-team" class="team-carousel carousel flex gap-6 lg:gap-7 overflow-x-auto px-5 sm:px-8 -mx-5 sm:-mx-8 py-5 cursor-grab select-none">
         <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Caroline Rzesnitzek" data-role="Anmeldung" data-bio="An unserer Anmeldung sorgt Caroline dafür, dass Sie sich vom ersten Moment an willkommen und gut aufgehoben fühlen.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Caroline R.</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Caroline Rzesnitzek" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Caroline Rzesnitzek</h4><p class="text-sage-600 font-medium">Anmeldung</p></div>
@@ -740,35 +730,38 @@
       <!-- Kontaktdaten -->
       <div class="reveal flex flex-col gap-4">
         <!-- Adresse -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
+        <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
           <p class="text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
         </div>
         <!-- Telefon (Karte = div mit Hover; Link nur um die Nummer → drag-markierbar) -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
+        <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </span>
           <a href="tel:+49216640641" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
         </div>
         <!-- E-Mail (analog) -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
+        <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           </span>
           <a href="mailto:info@drangelov.de" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
         </div>
         <!-- Öffentliche Anbindung / nächste Haltestellen -->
-        <div class="flex gap-4 rounded-2xl bg-paper border border-line p-6">
+        <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg>
           </span>
-          <ul class="space-y-1.5 text-[1.02rem] text-ink-soft">
-            <li><strong class="text-ink font-medium">Mönchengladbach Theater</strong> — Linien 001 · 002 · 020 · 097</li>
-            <li><strong class="text-ink font-medium">Rostockerstraße</strong> — Linie 020</li>
-          </ul>
+          <div>
+            <p class="text-[.72rem] font-semibold tracking-[.14em] uppercase text-sage-600 mb-1.5">Bushaltestellen in der Nähe</p>
+            <ul class="space-y-1.5 text-[1.02rem] text-ink-soft">
+              <li><strong class="text-ink font-medium">Mönchengladbach Theater</strong> — Linien 001 · 002 · 020 · 097</li>
+              <li><strong class="text-ink font-medium">Rostockerstraße</strong> — Linie 020</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Route planen -->
@@ -952,21 +945,32 @@
         slot.appendChild(cap);
       });
 
-      // Maus-Drag-Scrollen (Touch/Wisch funktioniert nativ)
-      let down = false, startX = 0, startScroll = 0, dragged = false;
-      track.addEventListener('mousedown', function (e) {
-        down = true; dragged = false; startX = e.pageX; startScroll = track.scrollLeft;
-        track.classList.remove('cursor-grab'); track.classList.add('cursor-grabbing');
+      // Maus-Ziehen zum Scrollen (Pointer Capture → kein „klebendes" Weiterscrollen ohne gedrückte Taste;
+      // Touch/Trackpad wischt nativ und smooth, da kein scroll-snap)
+      let down = false, dragged = false, startX = 0, startScroll = 0, pid = null;
+      track.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return; // nur linke Maustaste; Touch nativ
+        down = true; dragged = false; startX = e.clientX; startScroll = track.scrollLeft; pid = e.pointerId;
       });
-      window.addEventListener('mousemove', function (e) {
+      track.addEventListener('pointermove', function (e) {
         if (!down) return;
-        const dx = e.pageX - startX;
-        if (Math.abs(dx) > 6) { dragged = true; track.scrollLeft = startScroll - dx; }
+        const dx = e.clientX - startX;
+        if (!dragged && Math.abs(dx) > 6) {
+          dragged = true;
+          try { track.setPointerCapture(pid); } catch (_) {}
+          track.classList.remove('cursor-grab'); track.classList.add('cursor-grabbing');
+        }
+        if (dragged) { track.scrollLeft = startScroll - dx; e.preventDefault(); }
       });
-      window.addEventListener('mouseup', function () {
+      function endDrag() {
         if (!down) return;
-        down = false; track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
-      });
+        down = false;
+        if (pid != null) { try { track.releasePointerCapture(pid); } catch (_) {} }
+        pid = null;
+        track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
+      }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointercancel', endDrag);
 
       // Klick → Bio ein-/ausblenden (Foto weichgezeichnet); zweiter Klick schließt
       function closeAll(except) { cards.forEach(function (c) { if (c !== except) c.classList.remove('is-open'); }); }
@@ -976,31 +980,9 @@
           const isOpen = card.classList.contains('is-open');
           closeAll(card);
           card.classList.toggle('is-open', !isOpen);
-          dismissHint();
         });
       });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
-
-      // „Antippen"-Hinweis auf der ersten Karte (verschwindet nach ~6 s oder beim ersten Klick)
-      let hintEl = null, hintTimer = null;
-      function dismissHint() {
-        if (hintTimer) { clearTimeout(hintTimer); hintTimer = null; }
-        if (hintEl) { hintEl.remove(); hintEl = null; }
-        if (cards[0]) cards[0].classList.remove('team-hint-active');
-      }
-      (function showHint() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const first = cards[0];
-        const slot = first && first.querySelector('.img-slot');
-        if (!slot) return;
-        hintEl = document.createElement('div');
-        hintEl.className = 'team-hint';
-        hintEl.setAttribute('aria-hidden', 'true');
-        hintEl.innerHTML = '<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6.5a1.5 1.5 0 0 1 3 0V10"/><path d="M12 10.5V5a1.5 1.5 0 0 1 3 0v5.5"/><path d="M15 11V7.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.7-2.3l-2-2.6a1.6 1.6 0 0 1 2.5-1.95l1.2 1.35"/></svg><span class="team-hint__label">Antippen</span>';
-        first.classList.add('team-hint-active');
-        slot.appendChild(hintEl);
-        hintTimer = setTimeout(dismissHint, 6000);
-      })();
     })();
   })();
 </script>
