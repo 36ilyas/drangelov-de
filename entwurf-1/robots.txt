@@ -1,0 +1,5 @@
+# robots.txt – Praxis Dr. Emil Angelov
+User-agent: *
+Allow: /
+
+Sitemap: https://drangelov.de/sitemap.xml
