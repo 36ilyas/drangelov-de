@@ -1,0 +1,66 @@
+# ============================================================
+#  .htaccess – Praxis Dr. Emil Angelov
+#  Gilt nur auf Apache-Webservern (auf nginx wird sie ignoriert).
+# ============================================================
+
+# Standard-Startseite + Zeichensatz
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+# Verzeichnis-Auflistung verbieten
+# (Falls der Server hier einen 500-Fehler wirft: nur DIESE Zeile entfernen.)
+Options -Indexes
+
+# Eigene Fehlerseite
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------
+#  HTTPS erzwingen + "www" entfernen (passt zur canonical-Domain)
+# ------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http -> https (auch hinter Proxy/Load-Balancer korrekt)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # www.domain -> domain
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ------------------------------------------------------------
+#  Sicherheits-Header
+# ------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # HSTS erst aktivieren, wenn HTTPS stabil laeuft (haelt Browser 1 Jahr auf https):
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# ------------------------------------------------------------
+#  Komprimierung (schnellere Ladezeit)
+# ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------
+#  Browser-Caching statischer Dateien
+# ------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html              "access plus 0 seconds"
+  ExpiresByType text/css               "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png              "access plus 6 months"
+  ExpiresByType image/jpeg             "access plus 6 months"
+  ExpiresByType image/webp             "access plus 6 months"
+  ExpiresByType image/svg+xml          "access plus 6 months"
+  ExpiresByType image/x-icon           "access plus 1 year"
+  ExpiresByType application/pdf        "access plus 1 month"
+</IfModule>
