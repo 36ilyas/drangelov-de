@@ -129,7 +129,7 @@
           <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl">A</span>
           <span class="font-serif text-xl text-cream">Dr. Emil Angelov</span>
         </div>
-        <p class="mt-4 text-cream/70 leading-relaxed">Zahnmedizin in Mönchengladbach.<br />Limitenstraße 173, 41236 Mönchengladbach</p>
+        <p class="mt-4 text-cream/70 leading-relaxed">Zahnmedizin in Mönchengladbach<br />Limitenstraße 173, 41236 Mönchengladbach</p>
         <a href="tel:+49216640641" class="mt-4 block text-cream hover:text-white font-medium">02166 40641</a>
         <a href="mailto:info@drangelov.de" class="mt-1.5 block text-cream/75 hover:text-white transition-colors">info@drangelov.de</a>
       </div>
@@ -247,7 +247,7 @@
       if (f.type === 'yesno') {
         wrap.className += ' flex items-center justify-between gap-4';
         wrap.innerHTML =
-          '<span class="text-[1.02rem] text-ink">' + f.label + '</span>' +
+          '<span class="min-w-0 hyphens-auto break-words text-[1.02rem] text-ink">' + f.label + '</span>' +
           '<span class="yn inline-flex shrink-0 rounded-full border border-line overflow-hidden text-[.95rem]">' +
             '<label class="px-3.5 py-1.5 has-[:checked]:bg-sage-500 has-[:checked]:text-white transition-colors"><input class="sr-only" type="radio" name="' + f.name + '" value="Ja">Ja</label>' +
             '<label class="px-3.5 py-1.5 border-l border-line has-[:checked]:bg-sage-500 has-[:checked]:text-white transition-colors"><input class="sr-only" type="radio" name="' + f.name + '" value="Nein">Nein</label>' +
