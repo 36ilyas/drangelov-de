@@ -29,11 +29,8 @@ desktop.ini
 design-bundle/
 new-bundle/
 
-# Persönliche Planungsnotizen (lokal)
-QNA.md
-gespraech-vorbereitung/
-Angelov/
-
-# Vom Kunden gelieferte Rohdateien (lokal, nicht ins oeffentliche Repo)
-/Anamnese PDF.pdf
-/Impressum Daten.jpeg
+# Lokale Arbeitsordner – nicht Teil der oeffentlichen Website
+# projekt-ressourcen/ = Website-Quellen (Anamnese-PDF, Angelov Angebot/Rechnung, Design-Bundles)
+# persoenlich/        = Privates (Gespraechsvorbereitung, Impressum-Foto, QNA.md)
+projekt-ressourcen/
+persoenlich/
