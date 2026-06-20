@@ -105,6 +105,28 @@
     align-items: center;
   }
   #hero > div { width: 100%; }
+
+  /* Praxisteam: Klick → Foto weichgezeichnet + Bio-Caption (Core-form-Stil) */
+  .team-card .img-slot img { transition: filter .45s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+  .team-card.is-open .img-slot img { filter: blur(3px) brightness(.5); transform: scale(1.04); }
+  .ts-cap { position:absolute; inset:0; z-index:3; display:flex; align-items:flex-end; padding:1.15rem; background:linear-gradient(to top, rgba(44,42,37,.86) 0%, rgba(44,42,37,.5) 42%, rgba(44,42,37,0) 78%); opacity:0; transition:opacity .35s ease; pointer-events:none; }
+  .team-card.is-open .ts-cap { opacity:1; }
+  .ts-cap__bio { color:#fff; font-size:.92rem; line-height:1.5; transform:translateY(10px); opacity:0; transition:opacity .35s ease .08s, transform .35s ease .08s; }
+  .team-card.is-open .ts-cap__bio { transform:none; opacity:1; }
+  .team-hint-active .img-slot img { filter: brightness(.62); }
+  .team-hint { position:absolute; top:30%; left:50%; z-index:5; pointer-events:none; text-align:center; color:#fff; filter:drop-shadow(0 2px 9px rgba(0,0,0,.6)); opacity:0; transform:translateX(-50%); animation: ts-hint 5.8s ease forwards; }
+  .team-hint svg { display:block; margin:0 auto; }
+  .team-hint__label { display:block; margin-top:.45rem; font-size:.72rem; letter-spacing:.03em; }
+  @keyframes ts-hint {
+    0% { opacity:0; transform:translate(-50%,-4px); }
+    9% { opacity:1; transform:translate(-50%,-4px); }
+    72% { opacity:1; transform:translate(-50%,-15px); }
+    90%,100% { opacity:0; transform:translate(-50%,-18px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .team-hint { animation:none; opacity:0; }
+    .team-card .img-slot img, .ts-cap, .ts-cap__bio { transition:none; }
+  }
 </style>
 </head>
 
@@ -434,27 +456,6 @@
 </section>
 
 <!-- Team-Bio-Modal (Klick auf ein Praxisteam-Foto · Hintergrund weichgezeichnet) -->
-<div id="team-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-5">
-  <div id="team-modal-backdrop" class="absolute inset-0 bg-ink/40 backdrop-blur-md"></div>
-  <div class="relative w-full max-w-md rounded-3xl bg-paper border border-line shadow-2xl overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="team-modal-name">
-    <button id="team-modal-close" type="button" aria-label="Schließen" class="absolute top-3 right-3 z-10 grid place-items-center w-9 h-9 rounded-full bg-white/90 border border-line text-ink hover:bg-white transition-colors">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="flex gap-4 p-5 items-center border-b border-line">
-      <div class="img-slot w-24 h-28 rounded-2xl shrink-0 ring-1 ring-black/5 overflow-hidden">
-        <span class="slot-label" id="team-modal-photolabel" style="font-size:.58rem; letter-spacing:.02em;">Porträt</span>
-        <img id="team-modal-img" alt="" style="display:none" />
-      </div>
-      <div class="min-w-0">
-        <h4 id="team-modal-name" class="font-serif text-xl text-ink"></h4>
-        <p id="team-modal-role" class="mt-0.5 text-sage-600 font-medium"></p>
-      </div>
-    </div>
-    <div class="p-5">
-      <p id="team-modal-bio" class="text-[1.05rem] text-ink-soft leading-relaxed"></p>
-    </div>
-  </div>
-</div>
 
 <!-- ============================================================= -->
 <!-- SECTION: LEISTUNGEN (Grid · 6 Tiles)                          -->
@@ -865,8 +866,6 @@
       header.classList.toggle('bg-paper', solid);
       header.classList.toggle('backdrop-blur-md', solid);
       header.classList.toggle('shadow-[0_1px_0_rgba(231,225,214,1),0_8px_30px_-18px_rgba(44,42,37,.3)]', solid);
-      navBar.classList.toggle('h-[64px]', solid);
-      navBar.classList.toggle('h-[72px]', !solid);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -932,13 +931,28 @@
       });
     }
 
-    // --- Praxisteam: Maus-Drag-Scrollen + Bio-Modal ---
+    // --- Praxisteam: Klick → Bio über dem (weichgezeichneten) Foto + Drag-Scrollen + Hinweis ---
     (function () {
       const track = document.getElementById('carousel-team');
-      const modal = document.getElementById('team-modal');
-      if (!track || !modal) return;
+      if (!track) return;
+      const cards = Array.prototype.slice.call(track.querySelectorAll('.team-card'));
+      if (!cards.length) return;
 
-      // Drag-to-scroll mit der Maus (Touch/Wisch funktioniert nativ)
+      // Bio-Caption aus data-bio in jedes Foto einsetzen
+      cards.forEach(function (card) {
+        const slot = card.querySelector('.img-slot');
+        if (!slot) return;
+        const cap = document.createElement('div');
+        cap.className = 'ts-cap';
+        cap.setAttribute('aria-hidden', 'true');
+        const bio = document.createElement('p');
+        bio.className = 'ts-cap__bio';
+        bio.textContent = card.dataset.bio || '';
+        cap.appendChild(bio);
+        slot.appendChild(cap);
+      });
+
+      // Maus-Drag-Scrollen (Touch/Wisch funktioniert nativ)
       let down = false, startX = 0, startScroll = 0, dragged = false;
       track.addEventListener('mousedown', function (e) {
         down = true; dragged = false; startX = e.pageX; startScroll = track.scrollLeft;
@@ -954,38 +968,39 @@
         down = false; track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
       });
 
-      // Bio-Modal
-      const imgEl = document.getElementById('team-modal-img');
-      const photoLabel = document.getElementById('team-modal-photolabel');
-      const nameEl = document.getElementById('team-modal-name');
-      const roleEl = document.getElementById('team-modal-role');
-      const bioEl = document.getElementById('team-modal-bio');
-      function openModal(card) {
-        nameEl.textContent = card.dataset.name || '';
-        roleEl.textContent = card.dataset.role || '';
-        bioEl.textContent = card.dataset.bio || '';
-        if (photoLabel) photoLabel.textContent = card.dataset.name || 'Porträt';
-        const ci = card.querySelector('img'); const src = ci ? ci.getAttribute('src') : (card.dataset.img || '');
-        if (src) { imgEl.src = src; imgEl.alt = card.dataset.name || ''; imgEl.style.display = ''; }
-        else { imgEl.removeAttribute('src'); imgEl.style.display = 'none'; }
-        modal.classList.remove('hidden'); modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal() {
-        modal.classList.add('hidden'); modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
-      track.querySelectorAll('.team-card').forEach(function (card) {
+      // Klick → Bio ein-/ausblenden (Foto weichgezeichnet); zweiter Klick schließt
+      function closeAll(except) { cards.forEach(function (c) { if (c !== except) c.classList.remove('is-open'); }); }
+      cards.forEach(function (card) {
         card.addEventListener('click', function (e) {
           if (dragged) { dragged = false; e.preventDefault(); return; } // war ein Drag, kein Klick
-          openModal(card);
+          const isOpen = card.classList.contains('is-open');
+          closeAll(card);
+          card.classList.toggle('is-open', !isOpen);
+          dismissHint();
         });
       });
-      document.getElementById('team-modal-close').addEventListener('click', closeModal);
-      document.getElementById('team-modal-backdrop').addEventListener('click', closeModal);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+
+      // „Antippen"-Hinweis auf der ersten Karte (verschwindet nach ~6 s oder beim ersten Klick)
+      let hintEl = null, hintTimer = null;
+      function dismissHint() {
+        if (hintTimer) { clearTimeout(hintTimer); hintTimer = null; }
+        if (hintEl) { hintEl.remove(); hintEl = null; }
+        if (cards[0]) cards[0].classList.remove('team-hint-active');
+      }
+      (function showHint() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const first = cards[0];
+        const slot = first && first.querySelector('.img-slot');
+        if (!slot) return;
+        hintEl = document.createElement('div');
+        hintEl.className = 'team-hint';
+        hintEl.setAttribute('aria-hidden', 'true');
+        hintEl.innerHTML = '<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6.5a1.5 1.5 0 0 1 3 0V10"/><path d="M12 10.5V5a1.5 1.5 0 0 1 3 0v5.5"/><path d="M15 11V7.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.7-2.3l-2-2.6a1.6 1.6 0 0 1 2.5-1.95l1.2 1.35"/></svg><span class="team-hint__label">Antippen</span>';
+        first.classList.add('team-hint-active');
+        slot.appendChild(hintEl);
+        hintTimer = setTimeout(dismissHint, 6000);
+      })();
     })();
   })();
 </script>
