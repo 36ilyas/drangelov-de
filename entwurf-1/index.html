@@ -68,9 +68,8 @@
     color: #9A917F; text-align: center; padding: 1rem; }
 
   /* Carousel */
-  .carousel { scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none; }
+  .carousel { -ms-overflow-style: none; scrollbar-width: none; }   /* freies Scrollen ohne Snap – fuers Momentum-Wischen */
   .carousel::-webkit-scrollbar { display: none; }
-  .carousel > * { scroll-snap-align: start; }
 
   /* Mobile-Menü */
   .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
@@ -317,23 +316,47 @@
       </div>
 
       <!-- UNSPLASH: "dental clinic interior, treatment room, reception, waiting area" -->
-      <div id="carousel-praxis" class="carousel flex gap-5 overflow-x-auto pb-2">
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Empfang &amp; Wartebereich</span>
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Empfangsbereich der Praxis" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Behandlungsraum</span>
-          <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80" alt="Moderner Behandlungsraum" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Beratung &amp; Diagnostik</span>
-          <img src="https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=800&q=80" alt="Beratungsraum" loading="lazy" onerror="this.style.display='none'" />
-        </div>
-        <div class="img-slot shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] aspect-[4/3] rounded-2xl ring-1 ring-black/5">
-          <span class="slot-label">Prophylaxe-Bereich</span>
-          <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" alt="Prophylaxe-Bereich" loading="lazy" onerror="this.style.display='none'" />
-        </div>
+      <div id="carousel-praxis" class="carousel flex gap-5 overflow-x-auto pb-2 cursor-grab select-none">
+        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-paper border border-line overflow-hidden">
+          <div class="img-slot aspect-[4/3]">
+            <span class="slot-label">Empfang &amp; Wartebereich</span>
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Empfangsbereich der Praxis" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="p-4 sm:p-5">
+            <h4 class="font-serif text-lg sm:text-xl text-ink">Empfang &amp; Wartebereich</h4>
+            <p class="mt-1.5 text-[.92rem] text-ink-soft leading-snug">Herzlicher Empfang an der Anmeldung und ein ruhiger Wartebereich zum Ankommen.</p>
+          </figcaption>
+        </figure>
+        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-paper border border-line overflow-hidden">
+          <div class="img-slot aspect-[4/3]">
+            <span class="slot-label">Behandlungsraum</span>
+            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80" alt="Moderner Behandlungsraum" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="p-4 sm:p-5">
+            <h4 class="font-serif text-lg sm:text-xl text-ink">Behandlungsraum</h4>
+            <p class="mt-1.5 text-[.92rem] text-ink-soft leading-snug">Helle, moderne Behandlungsräume mit aktueller Technik für eine schonende Versorgung.</p>
+          </figcaption>
+        </figure>
+        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-paper border border-line overflow-hidden">
+          <div class="img-slot aspect-[4/3]">
+            <span class="slot-label">Beratung &amp; Diagnostik</span>
+            <img src="https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=800&q=80" alt="Beratungsraum" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="p-4 sm:p-5">
+            <h4 class="font-serif text-lg sm:text-xl text-ink">Beratung &amp; Diagnostik</h4>
+            <p class="mt-1.5 text-[.92rem] text-ink-soft leading-snug">Hier nehmen wir uns Zeit, um Befunde und Behandlungswege in Ruhe mit Ihnen zu besprechen.</p>
+          </figcaption>
+        </figure>
+        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-paper border border-line overflow-hidden">
+          <div class="img-slot aspect-[4/3]">
+            <span class="slot-label">Prophylaxe-Bereich</span>
+            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" alt="Prophylaxe-Bereich" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+          <figcaption class="p-4 sm:p-5">
+            <h4 class="font-serif text-lg sm:text-xl text-ink">Prophylaxe-Bereich</h4>
+            <p class="mt-1.5 text-[.92rem] text-ink-soft leading-snug">Eigener Bereich für professionelle Zahnreinigung und sanfte Vorsorge.</p>
+          </figcaption>
+        </figure>
       </div>
     </div>
 
@@ -734,21 +757,30 @@
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <p class="text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
+          <div>
+            <p class="text-[.72rem] font-semibold tracking-[.14em] uppercase text-sage-600 mb-1.5">Adresse</p>
+            <p class="text-[1.05rem] text-ink-soft select-text">Limitenstraße 173<br />41236 Mönchengladbach</p>
+          </div>
         </div>
         <!-- Telefon (Karte = div mit Hover; Link nur um die Nummer → drag-markierbar) -->
         <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </span>
-          <a href="tel:+49216640641" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
+          <div>
+            <p class="text-[.72rem] font-semibold tracking-[.14em] uppercase text-sage-600 mb-1.5">Telefon</p>
+            <a href="tel:+49216640641" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">02166 40641</a>
+          </div>
         </div>
         <!-- E-Mail (analog) -->
         <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6 hover:border-sage-400 transition-colors">
           <span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-sage-50 text-sage-600">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
           </span>
-          <a href="mailto:info@drangelov.de" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
+          <div>
+            <p class="text-[.72rem] font-semibold tracking-[.14em] uppercase text-sage-600 mb-1.5">E-Mail</p>
+            <a href="mailto:info@drangelov.de" class="text-[1.1rem] text-sage-700 font-medium select-text hover:text-sage-600 transition-colors">info@drangelov.de</a>
+          </div>
         </div>
         <!-- Öffentliche Anbindung / nächste Haltestellen -->
         <div class="flex items-center gap-4 rounded-2xl bg-paper border border-line p-6">
@@ -924,12 +956,71 @@
       });
     }
 
-    // --- Praxisteam: Klick → Bio über dem (weichgezeichneten) Foto + Drag-Scrollen + Hinweis ---
+    // --- Wiederverwendbares Drag-/Momentum-Scrollen (Maus): nach dem Loslassen gleitet es
+    //     je nach Wisch-Geschwindigkeit weiter aus. Touch/Trackpad scrollt nativ (eigenes Momentum). ---
+    function enableDragScroll(track) {
+      if (!track) return;
+      let down = false, dragged = false, startX = 0, startScroll = 0, pid = null, raf = null;
+      let samples = [];   // letzte {x,t}-Punkte für die Schwung-Berechnung
+      function stopGlide() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+      track.addEventListener('dragstart', function (e) { e.preventDefault(); }); // kein natives Bild-Ziehen → Drag bricht nicht ab
+      track.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return; // nur linke Maustaste; Touch nativ
+        stopGlide();
+        down = true; dragged = false; startX = e.clientX; startScroll = track.scrollLeft; pid = e.pointerId;
+        samples = [{ x: e.clientX, t: performance.now() }];
+      });
+      track.addEventListener('pointermove', function (e) {
+        if (!down) return;
+        const dx = e.clientX - startX;
+        if (!dragged && Math.abs(dx) > 6) {
+          dragged = true;
+          try { track.setPointerCapture(pid); } catch (_) {}
+          track.classList.remove('cursor-grab'); track.classList.add('cursor-grabbing');
+        }
+        if (dragged) {
+          track.scrollLeft = startScroll - dx;
+          samples.push({ x: e.clientX, t: performance.now() });
+          if (samples.length > 6) samples.shift();
+          e.preventDefault();
+        }
+      });
+      function endDrag() {
+        if (!down) return;
+        down = false;
+        if (pid != null) { try { track.releasePointerCapture(pid); } catch (_) {} pid = null; }
+        track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
+        if (dragged && samples.length >= 2) {            // Momentum aus der Wisch-Geschwindigkeit (Zeitfenster)
+          const last = samples[samples.length - 1];
+          let ref = samples[0];
+          for (let i = samples.length - 1; i >= 0; i--) { if (last.t - samples[i].t >= 40) { ref = samples[i]; break; } }
+          const dt = last.t - ref.t;
+          const v0 = dt > 0 ? (last.x - ref.x) / dt : 0; // px pro ms
+          if (Math.abs(v0) > 0.05) {
+            let v = -v0 * 16;                            // px/Frame, Richtung = Wisch-Richtung
+            (function glide() {
+              track.scrollLeft += v;
+              v *= 0.94;                                 // Reibung
+              raf = (Math.abs(v) > 0.4) ? requestAnimationFrame(glide) : null;
+            })();
+          }
+        }
+      }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointercancel', endDrag);
+      track.addEventListener('wheel', stopGlide, { passive: true });
+      // Klick direkt nach einem Wisch verschlucken (sonst würde z. B. eine Team-Bio aufgehen)
+      track.addEventListener('click', function (e) { if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; } }, true);
+    }
+    enableDragScroll(document.getElementById('carousel-praxis'));
+
+    // --- Praxisteam: Klick → Bio über dem (weichgezeichneten) Foto; Drag-/Momentum-Scrollen ---
     (function () {
       const track = document.getElementById('carousel-team');
       if (!track) return;
       const cards = Array.prototype.slice.call(track.querySelectorAll('.team-card'));
       if (!cards.length) return;
+      enableDragScroll(track);
 
       // Bio-Caption aus data-bio in jedes Foto einsetzen
       cards.forEach(function (card) {
@@ -945,38 +1036,11 @@
         slot.appendChild(cap);
       });
 
-      // Maus-Ziehen zum Scrollen (Pointer Capture → kein „klebendes" Weiterscrollen ohne gedrückte Taste;
-      // Touch/Trackpad wischt nativ und smooth, da kein scroll-snap)
-      let down = false, dragged = false, startX = 0, startScroll = 0, pid = null;
-      track.addEventListener('pointerdown', function (e) {
-        if (e.pointerType !== 'mouse' || e.button !== 0) return; // nur linke Maustaste; Touch nativ
-        down = true; dragged = false; startX = e.clientX; startScroll = track.scrollLeft; pid = e.pointerId;
-      });
-      track.addEventListener('pointermove', function (e) {
-        if (!down) return;
-        const dx = e.clientX - startX;
-        if (!dragged && Math.abs(dx) > 6) {
-          dragged = true;
-          try { track.setPointerCapture(pid); } catch (_) {}
-          track.classList.remove('cursor-grab'); track.classList.add('cursor-grabbing');
-        }
-        if (dragged) { track.scrollLeft = startScroll - dx; e.preventDefault(); }
-      });
-      function endDrag() {
-        if (!down) return;
-        down = false;
-        if (pid != null) { try { track.releasePointerCapture(pid); } catch (_) {} }
-        pid = null;
-        track.classList.add('cursor-grab'); track.classList.remove('cursor-grabbing');
-      }
-      track.addEventListener('pointerup', endDrag);
-      track.addEventListener('pointercancel', endDrag);
-
       // Klick → Bio ein-/ausblenden (Foto weichgezeichnet); zweiter Klick schließt
+      // (ein Wisch wird vom Drag-Handler abgefangen und löst hier nichts aus)
       function closeAll(except) { cards.forEach(function (c) { if (c !== except) c.classList.remove('is-open'); }); }
       cards.forEach(function (card) {
-        card.addEventListener('click', function (e) {
-          if (dragged) { dragged = false; e.preventDefault(); return; } // war ein Drag, kein Klick
+        card.addEventListener('click', function () {
           const isOpen = card.classList.contains('is-open');
           closeAll(card);
           card.classList.toggle('is-open', !isOpen);
