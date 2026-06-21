@@ -34,3 +34,4 @@ new-bundle/
 # persoenlich/        = Privates (Gespraechsvorbereitung, Impressum-Foto, QNA.md)
 projekt-ressourcen/
 persoenlich/
+deploy.sh
