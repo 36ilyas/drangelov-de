@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="icon" type="image/png" href="/assets/apple-touch-icon.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <title>Zahnarzt Mönchengladbach – Praxis Dr. Emil Angelov</title>
 <meta name="description" content="Zahnarztpraxis Dr. Emil Angelov in Mönchengladbach – seit 1990. Prophylaxe, Zahnerhaltung, Ästhetik, Implantologie & Kinderzahnheilkunde. Termine unter 02166 40641." />
 
@@ -17,15 +20,15 @@
 <meta property="og:locale" content="de_DE" />
 <meta property="og:title" content="Zahnarzt Mönchengladbach – Praxis Dr. Emil Angelov" />
 <meta property="og:description" content="Ihre Zahnarztpraxis in Mönchengladbach – seit 1990. Prophylaxe, Zahnerhaltung, Ästhetik, Implantologie & Kinderzahnheilkunde. Termine unter 02166 40641." />
-<meta property="og:url" content="https://drangelov.de/" />
-<meta property="og:image" content="https://drangelov.de/assets/og-image.png" />
+<meta property="og:url" content="https://ailyas.com/" />
+<meta property="og:image" content="https://ailyas.com/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Praxis Dr. Emil Angelov – Zahnmedizin in Mönchengladbach" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Zahnarzt Mönchengladbach – Praxis Dr. Emil Angelov" />
 <meta name="twitter:description" content="Ihre Zahnarztpraxis in Mönchengladbach – seit 1990. Termine unter 02166 40641." />
-<meta name="twitter:image" content="https://drangelov.de/assets/og-image.png" />
+<meta name="twitter:image" content="https://ailyas.com/assets/og-image.png" />
 <!-- Vorschau-Hosts (GitHub Pages) nicht indexieren – indexiert wird nur drangelov.de -->
 <script>if(location.hostname!=='drangelov.de'&&location.hostname!=='www.drangelov.de'){var m=document.querySelector('meta[name="robots"]')||document.head.appendChild(document.createElement('meta'));m.setAttribute('name','robots');m.setAttribute('content','noindex,nofollow');}</script>
 
@@ -34,37 +37,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<!-- TAILWIND (CDN – ok für Prototyp) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          cream:  '#F7F5F0',
-          paper:  '#FCFBF8',
-          ink:    '#2C2A25',
-          'ink-soft': '#5E574C',
-          line:   '#E7E1D6',
-          sage: {
-            50:  '#EEF1E9',
-            100: '#E1E7D6',
-            200: '#CCD6BC',
-            400: '#9AA889',
-            500: '#7E8E6E',
-            600: '#6B7B5B',
-            700: '#566348',
-          },
-        },
-        fontFamily: {
-          sans:  ['Inter', 'system-ui', 'sans-serif'],
-          serif: ['Fraunces', 'Georgia', 'serif'],
-        },
-        maxWidth: { content: '1180px' },
-      },
-    },
-  };
-</script>
+<!-- Tailwind (kompiliert, statische CSS) -->
+<link rel="stylesheet" href="/assets/tailwind.css" />
 
 <style>
   html { font-size: 17px; scroll-behavior: smooth; overflow-x: clip; }
@@ -96,7 +70,7 @@
 
   /* Mobile-Menü */
   .mobile-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
-  .mobile-menu.open { max-height: 460px; }
+  .mobile-menu.open { max-height: calc(100vh - 72px); max-height: calc(100dvh - 72px); overflow-y: auto; }
 
   /* Lange deutsche Komposita (z. B. „Behandlungsmethoden") in den schmalen Karten umbrechen */
   #praxis .flex h3, #praxis .flex p { overflow-wrap: break-word; hyphens: auto; }
@@ -130,7 +104,8 @@
 
   /* Praxisteam: Klick → Foto weichgezeichnet + Bio-Caption (Core-form-Stil) */
   .team-card .img-slot img { transition: filter .45s ease, transform .6s cubic-bezier(.22,1,.36,1); }
-  .team-card.is-open .img-slot img { filter: blur(3px) brightness(.5); transform: scale(1.04); }
+  .team-card.is-open { transform: scale(1.04); z-index: 5; }
+  .team-card.is-open .img-slot img { filter: blur(3px) brightness(.5); }
   .ts-cap { position:absolute; inset:0; z-index:3; display:flex; align-items:flex-end; padding:1.15rem; background:linear-gradient(to top, rgba(44,42,37,.86) 0%, rgba(44,42,37,.5) 42%, rgba(44,42,37,0) 78%); opacity:0; transition:opacity .35s ease; pointer-events:none; }
   .team-card.is-open .ts-cap { opacity:1; }
   .ts-cap__bio { color:#fff; font-size:.92rem; line-height:1.5; transform:translateY(10px); opacity:0; transition:opacity .35s ease .08s, transform .35s ease .08s; }
@@ -210,7 +185,7 @@
       <a href="#hero" class="flex items-center gap-3 group">
         <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl leading-none transition-colors group-hover:bg-sage-600">A</span>
         <span class="leading-tight">
-          <span class="block font-serif text-[1.15rem] text-ink">Dr. Emil Angelov</span>
+          <span class="block font-serif text-[1.15rem] text-ink whitespace-nowrap">Dr. Emil Angelov</span>
           <span class="block text-[.72rem] tracking-[.14em] uppercase text-ink-soft">Zahnmedizin · M'gladbach</span>
         </span>
       </a>
@@ -502,42 +477,42 @@
       </div>
 
       <div id="carousel-team" class="team-carousel carousel flex gap-6 lg:gap-7 overflow-x-auto px-5 sm:px-8 -mx-5 sm:-mx-8 py-5 cursor-grab select-none">
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Caroline Rzesnitzek" data-role="Anmeldung" data-bio="An unserer Anmeldung sorgt Caroline dafür, dass Sie sich vom ersten Moment an willkommen und gut aufgehoben fühlen.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Caroline Rzesnitzek" data-role="Anmeldung" data-bio="An unserer Anmeldung sorgt Caroline dafür, dass Sie sich vom ersten Moment an willkommen und gut aufgehoben fühlen.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Caroline R.</span><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Caroline Rzesnitzek" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Caroline Rzesnitzek</h4><p class="text-sage-600 font-medium">Anmeldung</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Galina Knorr" data-role="Anmeldung &amp; Assistenz" data-bio="Galina ist an der Anmeldung und in der Assistenz für Sie da – mit einem offenen Ohr und einer ruhigen Hand.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Galina Knorr" data-role="Anmeldung &amp; Assistenz" data-bio="Galina ist an der Anmeldung und in der Assistenz für Sie da – mit einem offenen Ohr und einer ruhigen Hand.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Galina K.</span><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="Galina Knorr" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Galina Knorr</h4><p class="text-sage-600 font-medium">Anmeldung &amp; Assistenz</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Dzanet Tabaczyk" data-role="Prophylaxe" data-bio="In der Prophylaxe kümmert sich Dzanet einfühlsam um die Gesundheit und das Strahlen Ihrer Zähne.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Dzanet Tabaczyk" data-role="Prophylaxe" data-bio="In der Prophylaxe kümmert sich Dzanet einfühlsam um die Gesundheit und das Strahlen Ihrer Zähne.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Dzanet T.</span><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Dzanet Tabaczyk" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Dzanet Tabaczyk</h4><p class="text-sage-600 font-medium">Prophylaxe</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Filiz Yalcin" data-role="Assistenz" data-bio="Filiz unterstützt unsere Behandlungen mit Sorgfalt, einem wachen Blick und einem freundlichen Lächeln.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Filiz Yalcin" data-role="Assistenz" data-bio="Filiz unterstützt unsere Behandlungen mit Sorgfalt, einem wachen Blick und einem freundlichen Lächeln.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Filiz Y.</span><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Filiz Yalcin" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Filiz Yalcin</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Jessica Akulov" data-role="Assistenz" data-bio="Jessica steht unserem Behandlungsteam zuverlässig zur Seite – aufmerksam, herzlich und mit ruhiger Hand.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Jessica Akulov" data-role="Assistenz" data-bio="Jessica steht unserem Behandlungsteam zuverlässig zur Seite – aufmerksam, herzlich und mit ruhiger Hand.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Jessica A.</span><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Jessica Akulov" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Jessica Akulov</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Christina Weiland" data-role="Assistenz" data-bio="Christina sorgt in der Assistenz für reibungslose Abläufe und eine angenehme, entspannte Atmosphäre.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Christina Weiland" data-role="Assistenz" data-bio="Christina sorgt in der Assistenz für reibungslose Abläufe und eine angenehme, entspannte Atmosphäre.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Christina W.</span><img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?auto=format&fit=crop&w=600&q=80" alt="Christina Weiland" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Christina Weiland</h4><p class="text-sage-600 font-medium">Assistenz</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="David Faust" data-role="Labor" data-bio="In unserem praxiseigenen Labor fertigt David hochwertigen Zahnersatz mit Präzision und Liebe zum Detail.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="David Faust" data-role="Labor" data-bio="In unserem praxiseigenen Labor fertigt David hochwertigen Zahnersatz mit Präzision und Liebe zum Detail.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · David F.</span><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="David Faust" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">David Faust</h4><p class="text-sage-600 font-medium">Labor</p></div>
         </button>
 
-        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Martin Angelov" data-role="Labor" data-bio="Martin bringt im Labor sein handwerkliches Können für passgenaue, ästhetische Ergebnisse ein.">
+        <button type="button" class="team-card group shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] text-left bg-transparent p-0 rounded-2xl transition-transform duration-300 will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2" data-name="Martin Angelov" data-role="Labor" data-bio="Martin bringt im Labor sein handwerkliches Können für passgenaue, ästhetische Ergebnisse ein.">
           <div class="img-slot aspect-[4/5] rounded-2xl ring-1 ring-black/5 pointer-events-none"><span class="slot-label">Porträt · Martin A.</span><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Martin Angelov" loading="lazy" onerror="this.style.display='none'" /></div>
           <div class="mt-3 pointer-events-none"><h4 class="font-serif text-xl text-ink">Martin Angelov</h4><p class="text-sage-600 font-medium">Labor</p></div>
         </button>
@@ -1125,6 +1100,8 @@
         });
       });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+      // Wegklicken (ausserhalb einer Karte) schliesst die offene Bio + setzt die Groesse zurueck
+      document.addEventListener('click', function (e) { if (!e.target.closest('.team-card')) closeAll(null); });
     })();
   })();
 </script>

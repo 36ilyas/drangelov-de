@@ -35,3 +35,10 @@ new-bundle/
 projekt-ressourcen/
 persoenlich/
 deploy.sh
+OFFENE-PUNKTE.md
+
+# Maschinenspezifische Deploy-Daten (Host/User/Key-Pfad) — lokal, nie committen, nie weitergeben
+CLAUDE.local.md
+
+# Privates lokales Backup des Nutzers — nie committen (wichtig, da Repo public)
+backup20_06/

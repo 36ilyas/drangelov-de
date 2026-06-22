@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="icon" type="image/png" href="/assets/apple-touch-icon.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <title>Datenschutzerklärung · Praxis Dr. Emil Angelov</title>
 <meta name="description" content="Datenschutzerklärung der Zahnarztpraxis Dr. Emil Angelov, Mönchengladbach. Informationen gemäß DSGVO." />
 <meta name="robots" content="index, follow" />
@@ -12,10 +15,10 @@
 <meta property="og:locale" content="de_DE" />
 <meta property="og:title" content="Datenschutzerklärung · Praxis Dr. Emil Angelov" />
 <meta property="og:description" content="Datenschutzerklärung der Zahnarztpraxis Dr. Emil Angelov, Mönchengladbach. Informationen gemäß DSGVO." />
-<meta property="og:url" content="https://drangelov.de/datenschutz.html" />
-<meta property="og:image" content="https://drangelov.de/assets/og-image.png" />
+<meta property="og:url" content="https://ailyas.com/datenschutz.html" />
+<meta property="og:image" content="https://ailyas.com/assets/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://drangelov.de/assets/og-image.png" />
+<meta name="twitter:image" content="https://ailyas.com/assets/og-image.png" />
 <script>if(location.hostname!=='drangelov.de'&&location.hostname!=='www.drangelov.de'){var m=document.querySelector('meta[name="robots"]')||document.head.appendChild(document.createElement('meta'));m.setAttribute('name','robots');m.setAttribute('content','noindex,nofollow');}</script>
 
 <!-- FONTS: Inter (Body/UI) + Fraunces (Serif-Akzent) -->
@@ -23,37 +26,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<!-- TAILWIND (CDN – konsistent mit index.html) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          cream:  '#F7F5F0',
-          paper:  '#FCFBF8',
-          ink:    '#2C2A25',
-          'ink-soft': '#5E574C',
-          line:   '#E7E1D6',
-          sage: {
-            50:  '#EEF1E9',
-            100: '#E1E7D6',
-            200: '#CCD6BC',
-            400: '#9AA889',
-            500: '#7E8E6E',
-            600: '#6B7B5B',
-            700: '#566348',
-          },
-        },
-        fontFamily: {
-          sans:  ['Inter', 'system-ui', 'sans-serif'],
-          serif: ['Fraunces', 'Georgia', 'serif'],
-        },
-        maxWidth: { content: '1180px', prose: '720px' },
-      },
-    },
-  };
-</script>
+<!-- Tailwind (kompiliert, statische CSS) -->
+<link rel="stylesheet" href="/assets/tailwind.css" />
 
 <style>
   html { font-size: 17px; scroll-behavior: smooth; }
@@ -84,22 +58,22 @@
 <!-- ============================================================= -->
 <!-- SECTION: STICKY TOP-NAV                                        -->
 <!-- ============================================================= -->
-<header class="sticky top-0 inset-x-0 z-50 bg-paper border-b border-line">
+<header class="sticky top-0 inset-x-0 z-50 bg-paper backdrop-blur-md shadow-[0_1px_0_rgba(231,225,214,1),0_8px_30px_-18px_rgba(44,42,37,.3)]">
   <nav class="mx-auto max-w-content px-5 sm:px-8">
     <div class="flex items-center justify-between h-[72px]">
 
       <a href="index.html" class="flex items-center gap-3 group">
         <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl leading-none transition-colors group-hover:bg-sage-600">A</span>
         <span class="leading-tight">
-          <span class="block font-serif text-[1.15rem] text-ink">Dr. Emil Angelov</span>
+          <span class="block font-serif text-[1.15rem] text-ink whitespace-nowrap">Dr. Emil Angelov</span>
           <span class="block text-[.72rem] tracking-[.14em] uppercase text-ink-soft">Zahnmedizin · M'gladbach</span>
         </span>
       </a>
 
-      <a href="index.html" class="inline-flex items-center gap-2 rounded-full bg-white border border-line hover:border-sage-400 text-ink px-4 sm:px-5 py-2 text-[.95rem] font-medium transition-colors">
+      <a href="index.html" aria-label="Zur Startseite" class="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-line hover:border-sage-400 text-ink w-11 h-11 sm:w-auto sm:h-auto sm:px-5 sm:py-2 text-[.95rem] font-medium transition-colors">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         <span class="hidden sm:inline">Zurück zur Praxis</span>
-        <span class="sm:hidden">Startseite</span>
+        
       </a>
     </div>
   </nav>
@@ -192,12 +166,6 @@
       Wir nutzen die Schriftarten „Inter" und „Fraunces" über <strong>Google Fonts</strong> (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Aufruf der Website werden die Schriftarten vom Google-Server geladen. Hierbei wird Ihre IP-Adresse an Google übertragen.
       Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (einheitliche und ansprechende Darstellung der Website).
       <br />Weitere Informationen: <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">policies.google.com/privacy</a>.
-    </p>
-
-    <h3>Tailwind CSS (CDN)</h3>
-    <p>
-      Das auf dieser Seite verwendete CSS-Framework wird über das Tailwind-eigene CDN (<code>cdn.tailwindcss.com</code>) eingebunden. Beim Laden wird Ihre IP-Adresse an den CDN-Anbieter übertragen.
-      Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (technisch notwendige Darstellung).
     </p>
 
     <h3>Unsplash</h3>
