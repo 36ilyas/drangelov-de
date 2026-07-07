@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-<link rel="icon" type="image/png" href="/assets/apple-touch-icon.png" />
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#F7F5F0" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2" />
+<link rel="icon" type="image/png" href="assets/apple-touch-icon.png?v=2" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
 <title>Anamnesebogen online ausfüllen · Praxis Dr. Emil Angelov</title>
 <meta name="description" content="Patientenfragebogen der Zahnarztpraxis Dr. Emil Angelov bequem online ausfüllen, als PDF herunterladen und mitbringen. Die Eingaben bleiben ausschließlich in Ihrem Browser." />
 <meta name="robots" content="noindex, follow" />
@@ -14,17 +16,17 @@
 <meta property="og:site_name" content="Praxis Dr. Emil Angelov" />
 <meta property="og:locale" content="de_DE" />
 <meta property="og:title" content="Anamnesebogen online ausfüllen · Praxis Dr. Emil Angelov" />
-<meta property="og:url" content="https://ailyas.com/anamnese-ausfuellen.html" />
-<meta property="og:image" content="https://ailyas.com/assets/og-image.png" />
+<meta property="og:url" content="https://drangelov.de/anamnese-ausfuellen.html" />
+<meta property="og:image" content="https://drangelov.de/assets/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://ailyas.com/assets/og-image.png" />
+<meta name="twitter:image" content="https://drangelov.de/assets/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- Tailwind (kompiliert, statische CSS) -->
-<link rel="stylesheet" href="/assets/tailwind.css" />
+<link rel="stylesheet" href="assets/tailwind.css?v=4" />
 
 <!-- jsPDF (client-side PDF-Erzeugung; keine Server-Übertragung) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -35,6 +37,8 @@
   .fld { width:100%; border:1px solid #E7E1D6; background:#fff; border-radius:12px; padding:.6rem .85rem; font-size:1rem; color:#2C2A25; transition:border-color .15s; }
   .fld:focus { outline:none; border-color:#7E8E6E; box-shadow:0 0 0 3px rgba(126,142,110,.15); }
   textarea.fld { min-height:90px; resize:vertical; }
+  /* Datum: feste, knappe Breite statt 100% — sonst auf Mobil zu breit, auf Desktop „verloren" */
+  input[type="date"].fld { width:13rem; max-width:100%; }
   .yn label { cursor:pointer; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
 </style>
@@ -46,7 +50,7 @@
   <nav class="mx-auto max-w-content px-5 sm:px-8">
     <div class="flex items-center justify-between h-[72px]">
       <a href="index.html" class="flex items-center gap-3 group">
-        <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl leading-none transition-colors group-hover:bg-sage-600">A</span>
+        <span class="block w-11 h-11 shrink-0 bg-sage-500 transition-colors group-hover:bg-sage-600" role="img" aria-label="Logo – Zahnarztpraxis Dr. Emil Angelov" style="-webkit-mask:url(assets/logo-praxis.png) center/contain no-repeat;mask:url(assets/logo-praxis.png) center/contain no-repeat"></span>
         <span class="leading-tight">
           <span class="block font-serif text-[1.15rem] text-ink whitespace-nowrap">Dr. Emil Angelov</span>
           <span class="block text-[.72rem] tracking-[.14em] uppercase text-ink-soft">Zahnmedizin · M'gladbach</span>
@@ -60,7 +64,7 @@
   </nav>
 </header>
 
-<main class="pb-28">
+<main class="pb-8">
   <section class="pt-12 sm:pt-16 pb-6">
     <div class="mx-auto max-w-prose px-5 sm:px-8">
       <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Vor Ihrem Besuch</span>
@@ -84,7 +88,19 @@
   </section>
 </main>
 
-<!-- Aktionsleiste -->
+<!-- Dauerhafter Hinweis: PDF herunterladen & per E-Mail senden (steht ÜBER der Aktionsleiste, damit die Leiste direkt an den Footer grenzt) -->
+<div class="mx-auto max-w-prose px-5 sm:px-8 mt-4 mb-12">
+  <div class="flex gap-3 rounded-2xl bg-sage-50 border border-sage-100 p-5 sm:p-6">
+    <svg class="w-6 h-6 shrink-0 text-sage-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+    <div>
+      <h3 class="font-serif text-xl text-ink">So senden Sie uns den Bogen</h3>
+      <p class="mt-2 text-[1.02rem] text-ink-soft">Bitte laden Sie den ausgefüllten Bogen zunächst <strong class="text-ink font-medium">als PDF herunter</strong> und senden Sie die Datei anschließend <strong class="text-ink font-medium">per E-Mail</strong> an uns – oder bringen Sie den ausgedruckten Bogen einfach zum Termin mit.</p>
+      <p class="mt-3 text-[1.02rem] text-ink-soft">Unsere E-Mail-Adresse: <a href="mailto:info@drangelov.de?subject=Anamnesebogen" class="text-sage-700 font-medium hover:text-sage-600 transition-colors select-text">info@drangelov.de</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Aktionsleiste (grenzt direkt an den Footer) -->
 <div class="sticky bottom-0 inset-x-0 z-40 border-t border-line bg-paper/95 backdrop-blur-sm">
   <div class="mx-auto max-w-prose px-5 sm:px-8 py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
     <button id="download-btn" type="button" class="inline-flex items-center justify-center gap-3 rounded-full bg-sage-500 hover:bg-sage-600 text-white px-7 py-3.5 text-lg font-medium shadow-sm hover:shadow transition-all">
@@ -99,7 +115,7 @@
 </div>
 
 <!-- Nach-Download-Hinweis (E-Mail-Schritte) -->
-<div id="sent-box" class="hidden mx-auto max-w-prose px-5 sm:px-8 -mt-2 mb-10">
+<div id="sent-box" class="hidden mx-auto max-w-prose px-5 sm:px-8 mt-10 mb-10">
   <div class="rounded-2xl bg-paper border border-line p-6">
     <h3 class="font-serif text-xl text-ink">PDF gespeichert – so senden Sie es uns</h3>
     <ol class="mt-3 space-y-1.5 text-ink-soft list-decimal list-inside">
@@ -120,10 +136,10 @@
     <div class="grid md:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-3">
-          <span class="grid place-items-center w-10 h-10 rounded-full bg-sage-500 text-white font-serif text-xl">A</span>
+          <span class="block w-10 h-10 shrink-0 bg-sage-500" role="img" aria-label="Logo – Zahnarztpraxis Dr. Emil Angelov" style="-webkit-mask:url(assets/logo-praxis.png) center/contain no-repeat;mask:url(assets/logo-praxis.png) center/contain no-repeat"></span>
           <span class="font-serif text-xl text-cream">Dr. Emil Angelov</span>
         </div>
-        <p class="mt-4 text-cream/70 leading-relaxed">Zahnmedizin in Mönchengladbach<br />Limitenstraße 173, 41236 Mönchengladbach</p>
+        <p class="mt-4 text-cream/70 leading-relaxed">Zahnmedizin in Mönchengladbach<br />Limitenstraße 173<br />41236 Mönchengladbach</p>
         <a href="tel:+49216640641" class="mt-4 block text-cream hover:text-white font-medium">02166 40641</a>
         <a href="mailto:info@drangelov.de" class="mt-1.5 block text-cream/75 hover:text-white transition-colors">info@drangelov.de</a>
       </div>
