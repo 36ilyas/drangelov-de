@@ -930,10 +930,33 @@
       a.addEventListener('click', function () { setMenu(false); });
     });
 
-    // --- Sprach-Umschalter (DE/EN): Desktop + Burger synchron; Inhalte folgen mit der EN-Version ---
+    // --- Sprach-Umschalter (DE/EN): schaltet den sichtbaren Text IN-PLACE um (gleiche Seite, kein Reload).
+    //     Die englischen Texte stammen aus index-en.html (strukturgleich): einmal geladen, dann
+    //     Textknoten-fuer-Textknoten zugeordnet – so bleiben alle Elemente + Event-Handler erhalten. ---
     const langToggles = document.querySelectorAll('.js-lang');
-    let isEn = false;
-    function applyLang() {
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const DE_TITLE = document.title;
+    const DE_DESC = metaDesc ? metaDesc.getAttribute('content') : '';
+    const EN_TITLE = 'Dentist in Mönchengladbach – Dr. Emil Angelov Dental Practice';
+    const EN_DESC = "Dr. Emil Angelov dental practice in Mönchengladbach – since 1990. Prevention, restorative and aesthetic dentistry, implantology and children's dentistry. Appointments: 02166 40641.";
+    let isEn = false, pairs = null, loading = false;
+
+    function langSkip(node) {
+      const n = node.nodeName;
+      return n === 'SCRIPT' || n === 'STYLE' || (node.classList && node.classList.contains('js-lang'));
+    }
+    function langCollect(deNode, enNode, acc) {
+      const a = deNode.childNodes, b = enNode.childNodes;
+      for (let i = 0; i < a.length && i < b.length; i++) {
+        const dn = a[i], en = b[i];
+        if (dn.nodeType === 3) {
+          if (dn.nodeValue.trim() && dn.nodeValue !== en.nodeValue) acc.push([dn, dn.nodeValue, en.nodeValue]);
+        } else if (dn.nodeType === 1 && !langSkip(dn)) {
+          langCollect(dn, en, acc);
+        }
+      }
+    }
+    function langPaintButtons() {
       langToggles.forEach(function (btn) {
         btn.dataset.lang = isEn ? 'en' : 'de';
         const de = btn.querySelector('[data-flag="de"]');
@@ -944,9 +967,29 @@
         if (lbl) lbl.textContent = isEn ? 'EN' : 'DE';
       });
     }
+    function langApply() {
+      document.documentElement.lang = isEn ? 'en' : 'de';
+      document.title = isEn ? EN_TITLE : DE_TITLE;
+      if (metaDesc) metaDesc.setAttribute('content', isEn ? EN_DESC : DE_DESC);
+      if (pairs) pairs.forEach(function (p) { p[0].nodeValue = isEn ? p[2] : p[1]; });
+      langPaintButtons();
+      try { localStorage.setItem('lang', isEn ? 'en' : 'de'); } catch (_) {}
+    }
+    function langEnsure() {
+      if (pairs || loading) { langApply(); return; }
+      loading = true;
+      fetch('index-en.html').then(function (r) { return r.text(); }).then(function (html) {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const acc = [];
+        langCollect(document.body, doc.body, acc);
+        pairs = acc;
+      }).catch(function () { pairs = []; }).then(function () { loading = false; langApply(); });
+    }
     langToggles.forEach(function (btn) {
-      btn.addEventListener('click', function () { isEn = !isEn; applyLang(); });
+      btn.addEventListener('click', function () { isEn = !isEn; if (isEn && !pairs) langEnsure(); else langApply(); });
     });
+    try { if (localStorage.getItem('lang') === 'en') { isEn = true; langEnsure(); } } catch (_) {}
+    langPaintButtons();
 
     // --- Reveal-on-scroll ---
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
