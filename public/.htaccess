@@ -42,6 +42,8 @@ ErrorDocument 403 /404.html
   RewriteRule ^so-finden-sie-uns/?$  /#kontakt       [R=301,L,NC]
   RewriteRule ^arbeitszeit/?$        /#sprechzeiten  [R=301,L,NC]
   RewriteRule ^downloads/?$          /#anamnese      [R=301,L,NC]
+  RewriteRule ^sitemap/?$            /               [R=301,L,NC]
+  RewriteRule ^printable(/.*)?$      /               [R=301,L,NC]
   RewriteRule ^vielen-dank\.html$    /               [R=301,L,NC]
 </IfModule>
 
