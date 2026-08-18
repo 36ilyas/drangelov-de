@@ -29,6 +29,17 @@ ErrorDocument 403 /404.html
   # www.domain -> domain
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # 301-Weiterleitungen alter SIQUANDO-URLs -> neue Seitenanker (Migration 08/2026)
+  RewriteRule ^kontakt\.html$        /#kontakt       [R=301,L,NC]
+  RewriteRule ^die-praxis/?$         /#praxis        [R=301,L,NC]
+  RewriteRule ^das-team/?$           /#team          [R=301,L,NC]
+  RewriteRule ^unser-service/?$      /#leistungen    [R=301,L,NC]
+  RewriteRule ^notdienst/?$          /#sprechzeiten  [R=301,L,NC]
+  RewriteRule ^so-finden-sie-uns/?$  /#kontakt       [R=301,L,NC]
+  RewriteRule ^arbeitszeit/?$        /#sprechzeiten  [R=301,L,NC]
+  RewriteRule ^downloads/?$          /#anamnese      [R=301,L,NC]
+  RewriteRule ^vielen-dank\.html$    /               [R=301,L,NC]
 </IfModule>
 
 # ------------------------------------------------------------

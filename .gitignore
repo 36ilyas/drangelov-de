@@ -42,3 +42,6 @@ CLAUDE.local.md
 
 # Privates lokales Backup des Nutzers — nie committen (wichtig, da Repo public)
 backup20_06/
+
+# Alte Praxis-Website (Server-Download, ~584 MB, enthält .w2b-Projekt + FTP-Logs) — NIE committen
+www/
