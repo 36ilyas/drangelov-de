@@ -7,6 +7,9 @@
 DirectoryIndex index.html
 AddDefaultCharset UTF-8
 
+# WebP korrekt ausliefern (falls der Server den MIME-Typ nicht kennt)
+AddType image/webp .webp
+
 # Verzeichnis-Auflistung verbieten
 # (Falls der Server hier einen 500-Fehler wirft: nur DIESE Zeile entfernen.)
 Options -Indexes
