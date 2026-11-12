@@ -25,15 +25,13 @@ desktop.ini
 *.tar.gz
 *.zip
 
-# Claude-Design-Handoff-Bundles (nur lokal als Referenz, nicht Teil der Website)
-design-bundle/
-new-bundle/
-
 # Lokale Arbeitsordner – nicht Teil der oeffentlichen Website
-# projekt-ressourcen/ = Website-Quellen (Anamnese-PDF, Angelov Angebot/Rechnung, Design-Bundles)
-# persoenlich/        = Privates (Gespraechsvorbereitung, Impressum-Foto, QNA.md)
+# projekt-ressourcen/ = Praxis-Dokumente (Angelov/), Entwuerfe, Fotos, Schulung
+# persoenlich/        = Privates (Notizen, Gespraechsvorbereitung, Impressum-Foto)
+# alte-website/       = Sicherung der alten Praxis-Website (oldpage/ + ZIP)
 projekt-ressourcen/
 persoenlich/
+alte-website/
 deploy.sh
 OFFENE-PUNKTE.md
 
