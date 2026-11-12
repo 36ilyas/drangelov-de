@@ -40,7 +40,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- Tailwind (kompiliert, statische CSS) -->
-<link rel="stylesheet" href="assets/tailwind.css?v=5" />
+<link rel="stylesheet" href="assets/tailwind.css?v=6" />
 
 <style>
   html { font-size: 17px; scroll-behavior: smooth; overflow-x: clip; }
@@ -365,7 +365,7 @@
       <div class="flex items-end justify-between gap-4 mb-6">
         <div>
           <span class="text-[.8rem] font-semibold tracking-[.16em] uppercase text-sage-600">Einblicke</span>
-          <h3 class="mt-2 font-serif text-2xl sm:text-3xl text-ink">Unsere Praxisräume</h3>
+          <h3 class="mt-2 font-serif text-2xl sm:text-3xl text-ink">Unsere Praxis von innen</h3>
         </div>
         <div class="hidden sm:flex gap-2">
           <button data-carousel="praxis" data-dir="-1" aria-label="Zurück" class="grid place-items-center w-11 h-11 rounded-full bg-white border border-line hover:border-sage-400 text-ink transition-colors">
@@ -885,6 +885,12 @@
     <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-2 justify-between text-[.92rem] text-cream/55">
       <p>© <span id="year"></span> Praxis Dr. Emil Angelov · Alle Rechte vorbehalten.</p>
       <p>Mönchengladbach · seit 1990</p>
+    </div>
+    <div class="mt-5 flex sm:justify-end">
+      <a href="https://ailyas.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[.8rem] text-cream/50 hover:text-cream transition-colors">
+        <span class="block w-5 h-5 shrink-0 bg-current" aria-hidden="true" style="-webkit-mask:url(assets/ailyas-mark.png) center/contain no-repeat;mask:url(assets/ailyas-mark.png) center/contain no-repeat"></span>
+        <span>Website von ailyas</span>
+      </a>
     </div>
   </div>
 </footer>
