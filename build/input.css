@@ -12,14 +12,14 @@
    Kachel-Masse: das weisse "ai" sitzt in der 512er-Kachel bei x176/y70, 276x276
    -> Kachel = 512/276 = 185.5 % der Logo-Groesse, versetzt um -63.8 % / -25.4 %. */
 @layer components {
-  /* items-baseline: Unterkante des "ai" sitzt auf der Grundlinie von "WEBSITE" */
-  .credit { @apply inline-flex items-baseline gap-2.5 text-[11px] tracking-[.12em] uppercase text-cream/50 transition-colors duration-200; }
-  .credit:hover, .credit.is-hover { @apply text-cream; }
-  .credit--tile { @apply gap-4; } /* Platz, damit die Kachel beim Hover "WEBSITE" nicht beruehrt */
-  .credit-logo { position: relative; display: block; width: 17px; height: 17px; flex-shrink: 0; }
-  .credit-mark { position: relative; display: block; width: 100%; height: 100%; filter: brightness(0) invert(1); opacity: .5; transition: filter .25s, opacity .25s; }
+  /* Schrift + Farbe erbt der Link von der Footer-Zeile; beim Hover aendert sich NUR das Logo.
+     items-baseline: Unterkante des "ai" sitzt auf der Grundlinie von "Website". */
+  .credit { @apply inline-flex items-baseline gap-2; }
+  .credit--tile { @apply gap-4; } /* Platz, damit die Kachel beim Hover "Website" nicht beruehrt */
+  .credit-logo { position: relative; display: block; width: 18px; height: 18px; flex-shrink: 0; }
+  .credit-mark { position: relative; display: block; width: 100%; height: 100%; filter: brightness(0) invert(1); opacity: .55; transition: filter .25s, opacity .25s; }
   .credit-tile { position: absolute; max-width: none; width: 185.5%; height: 185.5%; left: -63.8%; top: -25.4%; opacity: 0; transition: opacity .25s; }
-  .credit--tile:hover .credit-tile, .credit--tile.is-hover .credit-tile { opacity: 1; }
-  .credit--tile:hover .credit-mark, .credit--tile.is-hover .credit-mark { opacity: 1; }
-  .credit--gold:hover .credit-mark, .credit--gold.is-hover .credit-mark { filter: none; opacity: 1; }
+  .credit--tile:is(:hover, :focus-visible, .is-hover) .credit-tile { opacity: 1; }
+  .credit--tile:is(:hover, :focus-visible, .is-hover) .credit-mark { opacity: 1; }
+  .credit--gold:is(:hover, :focus-visible, .is-hover) .credit-mark { filter: none; opacity: 1; }
 }
