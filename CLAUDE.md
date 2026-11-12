@@ -5,7 +5,8 @@ Projektkontext für Claude Code. Wird bei jedem Sitzungsstart automatisch gelese
 ## Projekt
 Statische Website der **Zahnarztpraxis Dr. Emil Angelov** (Mönchengladbach).
 Reines HTML / CSS / JavaScript — kein Backend, keine Datenbank.
-Design: ruhig & modern, Farben sage/cream (Hauptgrün `sage-500` = `#6F8158`), Schriften Inter + Lora.
+Design: ruhig & modern, Farben sage/cream, Schriften Inter + Lora.
+Grün: Flächen (Buttons, Anruf-Button, Logo) = `sage-500` `#6F8158` · grüne Schrift + Hover = `sage-600` `#5D6E49` (dunkler, damit Text gut lesbar ist).
 
 ## Ordner
 - **`public/`** — **die Website, 1:1 wie live.** Nur dieser Inhalt kommt auf den Webserver.
@@ -15,7 +16,7 @@ Design: ruhig & modern, Farben sage/cream (Hauptgrün `sage-500` = `#6F8158`), S
   - `assets/` — Bilder, PDF, Favicon und die kompilierte `tailwind.css`
 - **`build/`** — Tailwind-Quellen (`tailwind.config.js`, `input.css`) zum Erzeugen der CSS.
 - Lokal und gitignored (nie committen, Repo ist öffentlich):
-  - `projekt-ressourcen/` — Praxis-Dokumente (`Angelov/`: Angebote, Rechnungen, Übersichten, Visitenkarten), `entwuerfe/`, `fotos/`, `schulung/`
+  - `projekt-ressourcen/` — Praxis-Dokumente (`Dokumente/`: Angebote, Rechnungen, Übersichten, Visitenkarten), `entwuerfe/`, `fotos/`, `schulung/`
   - `alte-website/` — Sicherung der alten Praxis-Website (`oldpage/` + ZIP)
   - `persoenlich/` — Privates
 
