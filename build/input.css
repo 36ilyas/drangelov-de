@@ -4,22 +4,14 @@
 
 /* Ueberschriften = Lora (Serif, normales f) via Google-Fonts-URL; Body = Inter. */
 
-/* Footer-Credit "WEBSITE [ai]" (Stil wie core-form.de).
-   Ruhend: blasses weisses "ai" (Gold-Logo per Filter weiss gefaerbt).
-   Hover:  .credit--tile = schwarze ai-Kachel erscheint hinter dem "ai"
-           .credit--gold = "ai" wird gold.
-   .is-hover erzwingt den Hover-Zustand (nur fuer Vorschau-Seiten).
-   Kachel-Masse: das weisse "ai" sitzt in der 512er-Kachel bei x176/y70, 276x276
-   -> Kachel = 512/276 = 185.5 % der Logo-Groesse, versetzt um -63.8 % / -25.4 %. */
+/* Footer-Credit "WEBSITE [ai-Kachel]" (Stil wie core-form.de), mittig in der Copyright-Zeile.
+   Farbe erbt der Link von der Zeile. Die Kachel ist immer sichtbar, aber gedaempft;
+   beim Hover/Fokus wird NUR die Kachel voll sichtbar, der Text bleibt.
+   Hoehe: Die Zeile richtet an der Grundlinie aus (lg:items-baseline); die Grundlinie des
+   Links ist die von "WEBSITE" (erstes Flex-Kind). Die Kachel ist per items-center zum Text
+   zentriert und darf oben/unten ueberstehen, ohne den Text zu verschieben. */
 @layer components {
-  /* Schrift + Farbe erbt der Link von der Footer-Zeile; beim Hover aendert sich NUR das Logo.
-     items-baseline: Unterkante des "ai" sitzt auf der Grundlinie von "Website". */
-  .credit { @apply inline-flex items-baseline gap-2; }
-  .credit--tile { @apply gap-4; } /* Platz, damit die Kachel beim Hover "Website" nicht beruehrt */
-  .credit-logo { position: relative; display: block; width: 18px; height: 18px; flex-shrink: 0; }
-  .credit-mark { position: relative; display: block; width: 100%; height: 100%; filter: brightness(0) invert(1); opacity: .55; transition: filter .25s, opacity .25s; }
-  .credit-tile { position: absolute; max-width: none; width: 185.5%; height: 185.5%; left: -63.8%; top: -25.4%; opacity: 0; transition: opacity .25s; }
-  .credit--tile:is(:hover, :focus-visible, .is-hover) .credit-tile { opacity: 1; }
-  .credit--tile:is(:hover, :focus-visible, .is-hover) .credit-mark { opacity: 1; }
-  .credit--gold:is(:hover, :focus-visible, .is-hover) .credit-mark { filter: none; opacity: 1; }
+  .credit { @apply inline-flex items-center gap-2.5 text-[13px] tracking-[.12em] uppercase; }
+  .credit-tile { display: block; width: 24px; height: 24px; flex-shrink: 0; margin-block: -6px; opacity: .55; transition: opacity .25s; }
+  .credit:is(:hover, :focus-visible) .credit-tile { opacity: 1; }
 }
