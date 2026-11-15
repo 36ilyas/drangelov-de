@@ -45,6 +45,9 @@ backup20_06/
 www/
 oldpage/
 
+# Kundenakte (vertraulich, nur lokal) - nie committen
+/KUNDENAKTE.md
+
 # Foto-Vergleiche im Hauptordner (Mitarbeiterfotos) - nie committen
 /Vorher-Nachher-*.jpg
 /Vergleich-*.jpg
