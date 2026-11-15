@@ -40,7 +40,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- Tailwind (kompiliert, statische CSS) -->
-<link rel="stylesheet" href="assets/tailwind.css?v=10" />
+<link rel="stylesheet" href="assets/tailwind.css?v=11" />
 
 <style>
   html { font-size: 17px; scroll-behavior: smooth; overflow-x: clip; }
@@ -58,7 +58,7 @@
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 
-  /* Warmer Bild-Platzhalter (greift, falls Unsplash-Foto nicht lädt) */
+  /* Warmer Bild-Platzhalter (greift, falls ein Foto nicht lädt) */
   .img-slot { position: relative; overflow: hidden;
     background: repeating-linear-gradient(135deg, #EFEAE0, #EFEAE0 14px, #E9E3D7 14px, #E9E3D7 28px); }
   .img-slot > img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -285,11 +285,10 @@
       </div>
 
       <!-- Hero-Bild (auf Mobile ausgeblendet, damit der Hero komplett in den Viewport passt) -->
-      <!-- UNSPLASH: "modern dental practice interior, warm lighting" -->
       <div class="reveal reveal-d1 hidden sm:block">
         <div class="img-slot aspect-[4/5] sm:aspect-[5/5] lg:aspect-auto lg:max-h-[460px] lg:h-[460px] rounded-[28px] shadow-[0_30px_60px_-30px_rgba(44,42,37,.35)] ring-1 ring-black/5">
-          <span class="slot-label">Praxisfoto · helle, warme Praxisräume</span>
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80" alt="Moderne, helle Zahnarztpraxis von Dr. Angelov" loading="eager" onerror="this.style.display='none'" />
+          <span class="slot-label">Praxisfoto · Empfang</span>
+          <img src="assets/praxis/hero-empfang.webp" alt="Empfang der Zahnarztpraxis Dr. Angelov in Mönchengladbach" width="1100" height="1375" fetchpriority="high" style="object-position:50% 55%" loading="eager" onerror="this.style.display='none'" />
         </div>
       </div>
 
@@ -377,30 +376,65 @@
         </div>
       </div>
 
-      <!-- UNSPLASH: "dental clinic interior, treatment room, reception, waiting area" -->
       <div id="carousel-praxis" class="carousel flex gap-5 overflow-x-auto pb-2 cursor-grab select-none">
-        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
-          <div class="img-slot aspect-[4/3]">
-            <span class="slot-label">Empfang &amp; Wartebereich</span>
-            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Empfangsbereich der Praxis" loading="lazy" onerror="this.style.display='none'" />
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Empfang</span>
+            <img src="assets/praxis/empfang.webp" alt="Empfangsbereich der Praxis" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
           </div>
         </figure>
-        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
-          <div class="img-slot aspect-[4/3]">
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Wartebereich</span>
+            <img src="assets/praxis/wartebereich.webp" alt="Wartebereich mit Vitrine" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
             <span class="slot-label">Behandlungsraum</span>
-            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=800&q=80" alt="Moderner Behandlungsraum" loading="lazy" onerror="this.style.display='none'" />
+            <img src="assets/praxis/behandlungsraum.webp" alt="Behandlungsraum mit Behandlungsstuhl" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
           </div>
         </figure>
-        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
-          <div class="img-slot aspect-[4/3]">
-            <span class="slot-label">Beratung &amp; Diagnostik</span>
-            <img src="https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=800&q=80" alt="Beratungsraum" loading="lazy" onerror="this.style.display='none'" />
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Behandlung</span>
+            <img src="assets/praxis/behandlung.webp" alt="Behandlung mit Lupenbrille" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
           </div>
         </figure>
-        <figure class="shrink-0 w-[78%] sm:w-[46%] lg:w-[31%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
-          <div class="img-slot aspect-[4/3]">
-            <span class="slot-label">Prophylaxe-Bereich</span>
-            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" alt="Prophylaxe-Bereich" loading="lazy" onerror="this.style.display='none'" />
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Behandlung</span>
+            <img src="assets/praxis/behandlung-detail.webp" alt="Behandlung im Detail" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Digitaler Abdruck</span>
+            <img src="assets/praxis/intraoralscanner.webp" alt="Digitaler Abdruck mit dem Intraoralscanner" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Intraoralscanner</span>
+            <img src="assets/praxis/scan-detail.webp" alt="Intraoralscanner im Einsatz" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Röntgen</span>
+            <img src="assets/praxis/roentgen.webp" alt="Modernes Röntgengerät" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Modellscanner</span>
+            <img src="assets/praxis/modellscanner.webp" alt="3D-Modellscanner" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
+          </div>
+        </figure>
+        <figure class="shrink-0 w-[64%] sm:w-[40%] lg:w-[30%] rounded-2xl bg-sage-50 border border-sage-100 overflow-hidden">
+          <div class="img-slot aspect-[4/5]">
+            <span class="slot-label">Wurzelbehandlung</span>
+            <img src="assets/praxis/endo-motor.webp" alt="Endodontie-Motor für Wurzelbehandlungen" width="800" height="1000" loading="lazy" onerror="this.style.display='none'" />
           </div>
         </figure>
       </div>

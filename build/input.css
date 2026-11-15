@@ -12,6 +12,8 @@
    zentriert und darf oben/unten ueberstehen, ohne den Text zu verschieben. */
 @layer components {
   .credit { @apply inline-flex items-center gap-2.5 text-[13px] tracking-[.12em] uppercase; }
-  .credit-tile { display: block; width: 24px; height: 24px; flex-shrink: 0; margin-block: -6px; opacity: .55; transition: opacity .25s; }
+  /* translateY: Kachelmitte auf die optische Mitte der Zeile (Mitte der Grossbuchstaben),
+     gemessen sass sie sonst ~1,5px zu tief */
+  .credit-tile { display: block; width: 24px; height: 24px; flex-shrink: 0; margin-block: -6px; transform: translateY(-1.5px); opacity: .55; transition: opacity .25s; }
   .credit:is(:hover, :focus-visible) .credit-tile { opacity: 1; }
 }

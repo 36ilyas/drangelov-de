@@ -44,3 +44,7 @@ backup20_06/
 # Alte Praxis-Website (Server-Download, ~584 MB, enthält .w2b-Projekt + FTP-Logs) — NIE committen
 www/
 oldpage/
+
+# Foto-Vergleiche im Hauptordner (Mitarbeiterfotos) - nie committen
+/Vorher-Nachher-*.jpg
+/Vergleich-*.jpg
